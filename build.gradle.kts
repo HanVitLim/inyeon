@@ -39,7 +39,11 @@ dependencies {
     implementation ("javax.servlet:jstl")
     implementation ("org.springframework.boot:spring-boot-starter-log4j2")	    // Spring Boot Log4j2
     implementation ("org.apache.tomcat.embed:tomcat-embed-jasper")
-
+    // db연결
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql 
+    implementation("org.postgresql:postgresql:42.6.0")
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
+    implementation ("org.mybatis:mybatis:3.5.6")
 }
 
 tasks.withType<Test> {
