@@ -13,6 +13,7 @@
     <title>Title</title>
 </head>
 <body>
+<div id="header"> </div>
     <p>hello</p>
     <table>
         <c:forEach var="test1" items="${test}">

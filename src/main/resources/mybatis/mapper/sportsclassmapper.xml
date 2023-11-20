@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.inyeon.main.mapper.SportsclassMapper">
+    <select id="sportsclassSelectAll" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="com.example.inyeon.main.dto.SportsclassDTO">
+        select a.item_nm as item_nm,
+               a.subitem_nm as subitem_nm,
+               a.ctprvn_nm as ctprvn_nm,
+               b.ctprvn_cd as ctprvn_cd,
+               a.signgu_nm as signgu_nm,
+               a.clssrm_nm as clssrm_nm
+        from sportsclass a join citycode b on b.ctprvn_nm = a.ctprvn_nm
+        order by b.ctprvn_cd , a.signgu_nm
+        limit 10 offset #{page} * 10
+    </select>
+
+    <select id="sportsclassCount" resultType="int">
+        select count(*) from sportsclass
+    </select>
+
+</mapper>
