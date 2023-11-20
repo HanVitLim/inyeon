@@ -32,6 +32,7 @@ public class SportsclassController {
         logger.info(dto.getPage());
         List<SportsclassDTO> list = sportsclassService.sportsclassSelectAll(dto);
 
+
         m.addAttribute("list",list);
         m.addAttribute("paging", paging);
 

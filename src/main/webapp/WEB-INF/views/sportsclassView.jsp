@@ -22,6 +22,18 @@
     <title>Title</title>
 </head>
 <body>
+<select>
+    <option>지역</option>
+    <c:forEach var="listb" items="${list}">
+        <option>${listb.ctprvn_nm}</option>
+    </c:forEach>
+</select>
+<select>
+    <option>종목</option>
+    <c:forEach var="listc" items="${list}">
+        <option>${listc.item_nm}</option>
+    </c:forEach>
+</select>
 <table>
     <tr>
         <td>종목명</td>
