@@ -1,5 +1,8 @@
 package com.example.inyeon.paging;
 
+import com.example.inyeon.main.dto.SportsclassDTO;
+import com.example.inyeon.main.dto.SportsclubDTO;
+
 public class Paging {
     private int totalCount; // 게시판 전체 데이터 개수
     private int displayPageNum = 10; // 게시판 화면에서 한번에 보여질 페이지 번호의 개수
