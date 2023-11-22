@@ -10,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.inyeon.paging.Paging;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import java.net.http.HttpRequest;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,22 +24,104 @@ public class SportsclassController {
     Logger logger = LogManager.getLogger(this.getClass());
 
     @GetMapping("/sportsclass")
-    public String sportsclassSelectAll(SportsclassDTO dto,Model m){
+    public String sportsclassSelectAll(SportsclassDTO dto, Model m){
+        logger.info(dto.getCtprvn_nm());
+        logger.info(dto.getItem_nm());
+        String ctnm = dto.getCtprvn_nm();
+        String itnm = dto.getItem_nm();
 
-        int sportsclassCount = sportsclassService.sportsclassCount();
+        if(ctnm == "-"){
+            ctnm = "rmsid";
+            dto.setCtprvn_nm(ctnm);
+        }
+
+        if(itnm == "-"){
+            itnm = "rmsid";
+            dto.setItem_nm(itnm);
+        }
+
+        int sportsclassCount = sportsclassService.sportsclassCount(dto);
         logger.info(sportsclassCount);
+
+        logger.info(dto.getCtprvn_nm());
+        logger.info(dto.getItem_nm());
+
 
         Paging paging = new Paging();
         paging.setCri(dto);
         paging.setTotalCount(sportsclassCount - 10);
         logger.info(dto.getPage());
         List<SportsclassDTO> list = sportsclassService.sportsclassSelectAll(dto);
+        List<SportsclassDTO> listname = sportsclassService.sportsclassName();
 
+        List<String> cityname = new ArrayList();
+        List<String> itemname = new ArrayList();
 
+        for(int i = 0; i < listname.size(); i++){
+            String cityN = listname.get(i).getCtprvn_nm();
+            String itemN = listname.get(i).getItem_nm();
+            cityname.add(cityN);
+            itemname.add(itemN);
+        }
+
+         cityname = cityname.stream().distinct().collect(Collectors.toList());
+         itemname = itemname.stream().distinct().collect(Collectors.toList());
+
+        m.addAttribute("cityname", cityname);
+        m.addAttribute("itemname",itemname);
         m.addAttribute("list",list);
         m.addAttribute("paging", paging);
 
         return "sportsclassView";
     };
+    @GetMapping("sportsclasscityname")
+    @ResponseBody
+    public Map<String, Object> sportsclasscityname(SportsclassDTO dto, Model m){
+        Map<String, Object> responseData = new HashMap<>();
+        List<SportsclassDTO> list = new ArrayList<>();
+        try {
+            logger.info(dto.getCtprvn_nm());
+            logger.info(dto.getItem_nm());
+
+            String ctnm = dto.getCtprvn_nm();
+            String itnm = dto.getItem_nm();
+
+            if(ctnm == "-"){
+                ctnm = "rmsid";
+                dto.setCtprvn_nm(ctnm);
+            }
+
+            if(itnm == "-"){
+                itnm = "rmsid";
+                dto.setItem_nm(itnm);
+            }
+
+            int sportsclassCount = sportsclassService.sportsclassCount(dto);
+            logger.info(sportsclassCount);
+
+            logger.info(dto.getCtprvn_nm());
+
+
+
+            Paging paging = new Paging();
+            paging.setCri(dto);
+            paging.setTotalCount(sportsclassCount - 10);
+
+            logger.info(dto.getCtprvn_nm());
+            logger.info(dto.getItem_nm());
+
+
+            list = sportsclassService.sportsclassSelectAll(dto);
+            responseData.put("paging", paging);
+            responseData.put("list",list);
+
+        }catch(Exception e) {
+            logger.info(e);
+        }
+
+        return responseData;
+    }
+
+
 
 }
