@@ -3,7 +3,7 @@
 
 <mapper namespace="com.example.inyeon.main.mapper.TestMapper">
     <select id="selectTest" resultType="com.example.inyeon.main.dto.TestDTO">
-            select * from test
+           select * from test
     </select>
 
 </mapper>
