@@ -8,23 +8,31 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import com.example.inyeon.paging.Paging;
 
 import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class VoucherController {
 
-    private Logger logger = LogManager.getLogger(Maintest.class);
-    private final VoucherService testService;
+    private final VoucherService voucherService;
     @GetMapping("/voucher")
-    public String test(Model model){
+    public String voucherSelectAll(VoucherDTO dto, Model m){
 
-        logger.info("test!!! >>>> ");
-        List<VoucherDTO> selecttest = testService.selectTest();
+        int voucherCount = voucherService.voucherCount();
+        Paging paging = new Paging();
+        paging.setCri(dto);
+        paging.setTotalCount(voucherCount - 10);
+        List<VoucherDTO> list = voucherService.voucherSelectAll(dto);
+        List<VoucherDTO> select = voucherService.voucherSelect1(dto);
+        List<VoucherDTO> select2 = voucherService.voucherSelect2(dto);
+//        List<VoucherDTO> setSelectedSigngu = voucherService.setSelectedSigngu(dto);
 
-        //logger.info(">>>> : " + selecttest.toString());
-
-        model.addAttribute("test", selecttest);
+        m.addAttribute("select", select);
+        m.addAttribute("select2", select2);
+//        m.addAttribute("setSelectedSigngu", setSelectedSigngu);
+        m.addAttribute("list",list);
+        m.addAttribute("paging", paging);
 
         return "inVoucher";
     }

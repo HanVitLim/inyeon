@@ -14,11 +14,37 @@ import java.util.List;
 public class VoucherServiceImpl implements VoucherService {
 
     private final VoucherMapper voucherMapper;
-    private Logger logger = LogManager.getLogger(this.getClass());
+    Logger logger = LogManager.getLogger(this.getClass());
+
 
     @Override
-    public List<VoucherDTO> selectTest() {
+    public List<VoucherDTO> voucherSelectAll(VoucherDTO dto) {
             logger.info("service 진입");
-        return voucherMapper.selectTest();
+        return voucherMapper.voucherSelectAll(dto);
     }
+
+    @Override
+    public List<VoucherDTO> voucherSelect1(VoucherDTO dto){
+
+        return voucherMapper.voucherSelect1(dto);
+    }
+    @Override
+    public List<VoucherDTO> voucherSelect2(VoucherDTO dto){
+
+        return voucherMapper.voucherSelect2(dto);
+    }
+
+//    @Override
+//    public List<VoucherDTO> setSelectedSigngu(VoucherDTO dto){
+//
+//        return voucherMapper.setSelectedSigngu(dto);
+//    }
+
+    @Override
+    public int voucherCount() {
+
+        return voucherMapper.voucherCount();
+
+    }
+
 }

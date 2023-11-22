@@ -5,6 +5,10 @@ import com.example.inyeon.main.dto.VoucherDTO;
 import java.util.List;
 
 public interface VoucherService {
-    public List<VoucherDTO> selectTest();
+    List<VoucherDTO> voucherSelectAll(VoucherDTO dto);
+    List<VoucherDTO> voucherSelect1(VoucherDTO dto);
+    List<VoucherDTO> voucherSelect2(VoucherDTO dto);
+//    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
+    int voucherCount();
 
 }
