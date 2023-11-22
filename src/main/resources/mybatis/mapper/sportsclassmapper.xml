@@ -10,40 +10,16 @@
                a.signgu_nm as signgu_nm,
                a.clssrm_nm as clssrm_nm
         from sportsclass a join citycode b on b.ctprvn_nm = a.ctprvn_nm
-        <where>
-            <choose>
-                <when test="ctprvn_nm != 'rmsid' and item_nm != 'rmsid'">
-                    AND  a.ctprvn_nm = #{ctprvn_nm}
-                    AND  a.item_nm = #{item_nm}
-                </when>
-                <when test="ctprvn_nm !='rmsid' and item_nm == 'rmsid'">
-                    AND  a.ctprvn_nm = #{ctprvn_nm}
-                </when>
-                <when test="ctprvn_nm == 'rmsid' and item_nm != 'rmsid'">
-                    AND  a.item_nm = #{item_nm}
-                </when>
-            </choose>
-        </where>
+        <if test="ctprvn_nm != 'rmsid'">
+            where a.ctprvn_nm = #{ctprvn_nm}
+        </if>
         order by b.ctprvn_cd , a.signgu_nm
-        limit 10 offset #{page} * 10
+        limit 10 offset(#{page} - 1) * 10
     </select>
 
     <select id="sportsclassCount" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="int">
         select count(*) from sportsclass
-        <where>
-        <choose>
-            <when test="ctprvn_nm != 'rmsid' and item_nm != 'rmsid'">
-                AND  ctprvn_nm = #{ctprvn_nm}
-                AND item_nm = #{item_nm}
-            </when>
-            <when test="ctprvn_nm !='rmsid' and item_nm == 'rmsid'">
-                AND  ctprvn_nm = #{ctprvn_nm}
-            </when>
-            <when test="ctprvn_nm == 'rmsid' and item_nm != 'rmsid'">
-                AND  item_nm = #{item_nm}
-            </when>
-        </choose>
-        </where>
+
     </select>
 
     <select id="sportsclassName" resultType="com.example.inyeon.main.dto.SportsclassDTO">

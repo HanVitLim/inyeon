@@ -19,9 +19,16 @@
     <title>Title</title>
     <!-- Kakao Maps API Script -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d7d471db687c23809bd48aaf7da534a"></script>
+    <link rel="stylesheet" href="css/commonBody.css">
+
 </head>
 <body>
-<select id="selectCtprvn" onchange="updateSignguOptions()">
+<!-- header include start -->
+<jsp:include page="header.jsp"/>
+<!-- header include end -->
+<main>
+    <div class="mainContainer">
+    <select id="selectCtprvn" onchange="updateSignguOptions()">
     <c:forEach var="selecta" items="${select}">
         <option value="${selecta.ctprvn_cd}">${selecta.ctprvn_nm}</option>
     </c:forEach>
@@ -121,7 +128,10 @@
 </ul>
 <!-- Container for Kakao Map -->
 <div id="kakao-map" style="width: 300px; height: 300px;"></div>
-
-
+    </div>
+</main>
+<!-- footer include start-->
+<jsp:include page="footer.jsp" />
+<!-- footer include end-->
 </body>
 </html>

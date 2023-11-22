@@ -21,7 +21,7 @@
 
         order by a.signgu_nm
 
-               limit 10 offset #{page} * 10
+               limit 10 offset (#{page} - 1) * 10
     </select>
 
     <select id="voucherCount" resultType="int">

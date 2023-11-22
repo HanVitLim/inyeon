@@ -4,6 +4,8 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="css/commonBody.css">
+
 </head>
 
 <script>
@@ -29,6 +31,11 @@
     }
 </style>
 <body>
+<!-- header include start -->
+<jsp:include page="header.jsp"/>
+<!-- header include end -->
+<main>
+    <div class="mainContainer">
     <p>SportsClub</p>
     <select>
         <option>종목</option>
@@ -99,5 +106,10 @@
             <span><a href='<c:url value="/sportsclub?page=${paging.endPage+1}"/>'>다음</a></span>
         </c:if>
     </ul>
+    </div>
+</main>
+    <!-- footer include start-->
+    <jsp:include page="footer.jsp" />
+    <!-- footer include end-->
 </body>
 </html>

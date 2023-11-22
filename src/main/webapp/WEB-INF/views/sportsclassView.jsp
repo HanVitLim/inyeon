@@ -13,6 +13,7 @@
 <head>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>Title</title>
+    <link rel="stylesheet" href="css/commonBody.css">
 </head>
 <script>
     $(document).ready(function (){
@@ -101,14 +102,14 @@
 <!-- header include start -->
 <jsp:include page="header.jsp"/>
 <!-- header include end -->
-<main>
+    <main>
             <div class="mainContainer">
-               <select id="ctprvn_nm" name="ctprvn_nm">
-            <option value="-" selected>지역</option>
+                <select id="ctprvn_nm" name="ctprvn_nm">
+                    <option value="-" selected>지역</option>
             <c:forEach var="citynamelist" items="${cityname}">
                 <option value="${citynamelist}">${citynamelist}</option>
             </c:forEach>
-        </select>
+                </select>
         <select id="item_nm" name="item_nm">
             <option value="-" selected>종목</option>
             <c:forEach var="itemnamelist" items="${itemname}">
