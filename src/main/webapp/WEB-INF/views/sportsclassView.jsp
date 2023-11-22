@@ -15,53 +15,63 @@
         border : 1px solid black;
         text-align: center;
     }
-
 </style>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="css/commonBody.css">
 </head>
 <body>
-<select>
-    <option>지역</option>
-    <c:forEach var="listb" items="${list}">
-        <option>${listb.ctprvn_nm}</option>
-    </c:forEach>
-</select>
-<select>
-    <option>종목</option>
-    <c:forEach var="listc" items="${list}">
-        <option>${listc.item_nm}</option>
-    </c:forEach>
-</select>
-<table>
-    <tr>
-        <td>종목명</td>
-        <td>부종목명</td>
-        <td>시도명</td>
-        <td>시군구명</td>
-        <td>교실명</td>
-    </tr>
-    <c:forEach var="lista" items="${list}">
-       <tr>
-           <td>${lista.item_nm}</td>
-           <td>${lista.subitem_nm}</td>
-           <td>${lista.ctprvn_nm}</td>
-           <td>${lista.signgu_nm}</td>
-           <td>${lista.clssrm_nm}</td>
-       </tr>
-    </c:forEach>
-</table>
-<ul class="paging">
-    <c:if test="${paging.prev}">
-        <span><a href='<c:url value="/sportsclass?page=${paging.startPage-1}"/>'>이전</a></span>
-    </c:if>
-    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-        <span><a href='<c:url value="/sportsclass?page=${num}"/>'>${num}</a></span>
-    </c:forEach>
-    <c:if test="${paging.next && paging.endPage>0}">
-        <span><a href='<c:url value="/sportsclass?page=${paging.endPage+1}"/>'>다음</a></span>
-    </c:if>
-</ul>
+<!-- header include start -->
+<jsp:include page="header.jsp"/>
+<!-- header include end -->
+<main>
+    <div class="mainContainer">
+        <select>
+            <option>지역</option>
+            <c:forEach var="listb" items="${list}">
+                <option>${listb.ctprvn_nm}</option>
+            </c:forEach>
+        </select>
+        <select>
+            <option>종목</option>
+            <c:forEach var="listc" items="${list}">
+                <option>${listc.item_nm}</option>
+            </c:forEach>
+        </select>
+        <table>
+            <tr>
+                <td>종목명</td>
+                <td>부종목명</td>
+                <td>시도명</td>
+                <td>시군구명</td>
+                <td>교실명</td>
+            </tr>
+            <c:forEach var="lista" items="${list}">
+               <tr>
+                   <td>${lista.item_nm}</td>
+                   <td>${lista.subitem_nm}</td>
+                   <td>${lista.ctprvn_nm}</td>
+                   <td>${lista.signgu_nm}</td>
+                   <td>${lista.clssrm_nm}</td>
+               </tr>
+            </c:forEach>
+        </table>
+        <ul class="paging">
+            <c:if test="${paging.prev}">
+                <span><a href='<c:url value="/sportsclass?page=${paging.startPage-1}"/>'>이전</a></span>
+            </c:if>
+            <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                <span><a href='<c:url value="/sportsclass?page=${num}"/>'>${num}</a></span>
+            </c:forEach>
+            <c:if test="${paging.next && paging.endPage>0}">
+                <span><a href='<c:url value="/sportsclass?page=${paging.endPage+1}"/>'>다음</a></span>
+            </c:if>
+        </ul>
+    </div>
+</main>
+<!-- footer include start-->
+<jsp:include page="footer.jsp" />
+<!-- footer include end-->
 </body>
 </html>

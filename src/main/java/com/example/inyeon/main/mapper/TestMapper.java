@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface TestMapper {
 
-    List<TestDTO> selectTest();
+   // List<TestDTO> selectTest();
 
 
 }

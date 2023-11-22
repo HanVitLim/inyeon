@@ -15,6 +15,7 @@
 <body>
 <div id="header"> </div>
     <p>hello</p>
+   <!--
     <table>
         <c:forEach var="test1" items="${test}">
             <tr align="center">
@@ -30,5 +31,6 @@
 
         </c:forEach>
     </table>
+    -->
 </body>
 </html>

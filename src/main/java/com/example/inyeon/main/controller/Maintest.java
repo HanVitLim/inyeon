@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class Maintest {
 
     private Logger logger = LogManager.getLogger(Maintest.class);
-    private final TestService testService;
+    //private final TestService testService;
     @GetMapping("/main")
     public String test(Model model){
-
+        /*
         logger.info("test!!! >>>> ");
         List<TestDTO> selecttest = testService.selectTest();
 
         //logger.info(">>>> : " + selecttest.toString());
 
         model.addAttribute("test", selecttest);
-
-        return "hello";
+        */
+        return "mainBody";
     }
 
 }
