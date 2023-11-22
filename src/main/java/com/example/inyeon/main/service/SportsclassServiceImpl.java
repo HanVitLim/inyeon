@@ -22,8 +22,13 @@ public class SportsclassServiceImpl implements SportsclassService {
     }
 
     @Override
-    public int sportsclassCount() {
+    public int sportsclassCount(SportsclassDTO dto) {
 
-        return sportsclassMapper.sportsclassCount();
+        return sportsclassMapper.sportsclassCount(dto);
+    }
+
+    @Override
+    public List<SportsclassDTO> sportsclassName() {
+        return sportsclassMapper.sportsclassName();
     }
 }

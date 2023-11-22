@@ -11,7 +11,9 @@ import java.util.List;
 public interface SportsclassMapper {
     List<SportsclassDTO> sportsclassSelectAll(SportsclassDTO dto);
 
-    int sportsclassCount();
+    int sportsclassCount(SportsclassDTO dto);
+
+    List<SportsclassDTO> sportsclassName();
 
 
 }

@@ -8,38 +8,114 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-%>
+
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Title</title>
+</head>
+<script>
+    $(document).ready(function (){
+
+        $("#ctprvn_nm").change(function (){
+
+                var ctitemnm = {ctprvn_nm: $("#ctprvn_nm").val(),
+                                item_nm: $("#item_nm").val(),};
+                console.log(ctprvn_nm);
+                console.log(item_nm);
+                $.ajax({
+                    url: "/sportsclasscityname",
+                    method: "GET",
+                    data: ctitemnm,
+                    success: function (data) {
+                        console.log(data);
+                        var dataList = data.list;
+                        selectCity(dataList);
+
+                    }, error: function (e) {
+                        console.log(e.responseText);
+                    }
+
+                });
+
+        });
+
+        $("#item_nm").change(function (){
+
+            var ctitemnm = {ctprvn_nm: $("#ctprvn_nm").val(),
+                             item_nm: $("#item_nm").val(),};
+            console.log(ctprvn_nm);
+            console.log(item_nm);
+            $.ajax({
+                url: "/sportsclasscityname",
+                method: "GET",
+                data: ctitemnm,
+                success: function (data) {
+                    console.log(data);
+                    var dataList = data.list;
+                    selectCity(dataList);
+
+                }, error: function (e) {
+                    console.log(e.responseText);
+                }
+
+            });
+
+        });
+
+
+
+        function selectCity(data){
+
+            $("#sportsclasslist").empty();
+
+            $("#sportsclasslist").append('<tr>' + '<td>' + '종목명' + '</td>'
+                + '<td>' + '부종목명' + '</td>'
+                + '<td>' + '시도명' + '</td>'
+                + '<td>' + '시군구명' + '</td>'
+                + '<td>' + '교실명' + '</td>'
+                +'</tr>');
+
+            $.each(data, function (index, lists){
+                console.log("bbbbb>>> : " + lists.item_nm);
+                $("#sportsclasslist").append('<tr>' + '<td>' + lists.item_nm + '</td>'
+                                                    + '<td>' + lists.subitem_nm + '</td>'
+                                                    + '<td>' + lists.ctprvn_nm + '</td>'
+                                                    + '<td>' + lists.signgu_nm + '</td>'
+                                                    + '<td>' + lists.clssrm_nm + '</td>'
+                                                    +'</tr>');
+
+                console.log($("#ctprvn_nm").val());
+            });
+        }
+
+    });
+</script>
 <style>
     table, tr, td {
         border : 1px solid black;
         text-align: center;
     }
 </style>
-<html>
-<head>
-    <title>Title</title>
-    <link rel="stylesheet" href="css/commonBody.css">
-</head>
 <body>
 <!-- header include start -->
 <jsp:include page="header.jsp"/>
 <!-- header include end -->
 <main>
-    <div class="mainContainer">
-        <select>
-            <option>지역</option>
-            <c:forEach var="listb" items="${list}">
-                <option>${listb.ctprvn_nm}</option>
+            <div class="mainContainer">
+               <select id="ctprvn_nm" name="ctprvn_nm">
+            <option value="-" selected>지역</option>
+            <c:forEach var="citynamelist" items="${cityname}">
+                <option value="${citynamelist}">${citynamelist}</option>
             </c:forEach>
         </select>
-        <select>
-            <option>종목</option>
-            <c:forEach var="listc" items="${list}">
-                <option>${listc.item_nm}</option>
+        <select id="item_nm" name="item_nm">
+            <option value="-" selected>종목</option>
+            <c:forEach var="itemnamelist" items="${itemname}">
+                <option value="${itemnamelist}">${itemnamelist}</option>
             </c:forEach>
         </select>
-        <table>
+        <table id="sportsclasslist">
             <tr>
                 <td>종목명</td>
                 <td>부종목명</td>
