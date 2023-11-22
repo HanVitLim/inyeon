@@ -19,12 +19,14 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="css/commonBody.css">
+
 </head>
 <script>
     $(document).ready(function(){
 
         $(document).on("click", "#All", function(){
-            $(".clubSelect").attr({"method":"GET", "action":"sportsclubSelectAll"}).submit();
+            $(".clubSelect").attr({"method":"GET", "action":"sportsclub"}).submit();
         });
     });
 </script>
@@ -34,8 +36,12 @@
     }
 </style>
 <body>
-
-<form class="clubSelect" name="clubSelect">
+<!-- header include start -->
+<jsp:include page="header.jsp"/>
+<!-- header include end -->
+<main>
+    <div class="mainContainer">
+    <form class="clubSelect" name="clubSelect">
     <table>
         <tr>
             <td colspan="2" align="center">동호회명:<%= dto.getClub_nm() %></td>
@@ -59,6 +65,10 @@
     </table>
     <button type="button" id="All">목록</button>
 </form>
-
+    </div>
+</main>
+<!-- footer include start-->
+<jsp:include page="footer.jsp" />
+<!-- footer include end-->
 </body>
 </html>

@@ -30,7 +30,7 @@ public class SportsclassController {
         String ctnm = dto.getCtprvn_nm();
         String itnm = dto.getItem_nm();
 
-        if(ctnm == "-"){
+        if(ctnm == null){
             ctnm = "rmsid";
             dto.setCtprvn_nm(ctnm);
         }
