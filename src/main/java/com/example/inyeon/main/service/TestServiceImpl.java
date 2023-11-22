@@ -13,12 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
 
-    private final TestMapper testMapper;
+    //private final TestMapper testMapper;
     private Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     public List<TestDTO> selectTest() {
             logger.info("service 진입");
-        return testMapper.selectTest();
+    //    return testMapper.selectTest();
+        return null;
     }
 }
