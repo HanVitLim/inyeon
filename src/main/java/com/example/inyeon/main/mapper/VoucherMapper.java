@@ -10,7 +10,13 @@ import java.util.List;
 @Repository
 public interface VoucherMapper {
 
-    List<VoucherDTO> selectTest();
+    List<VoucherDTO> voucherSelectAll(VoucherDTO dto);
 
+    List<VoucherDTO> voucherSelect1(VoucherDTO dto);
 
+    List<VoucherDTO> voucherSelect2(VoucherDTO dto);
+
+    int voucherCount();
+
+//    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
 }
