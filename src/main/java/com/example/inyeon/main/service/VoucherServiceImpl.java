@@ -22,6 +22,11 @@ public class VoucherServiceImpl implements VoucherService {
             logger.info("service 진입");
         return voucherMapper.voucherSelectAll(dto);
     }
+    @Override
+    public List<VoucherDTO> voucherSelect(VoucherDTO dto) {
+
+        return voucherMapper.voucherSelect(dto);
+    }
 
     @Override
     public List<VoucherDTO> voucherSelect1(VoucherDTO dto){
