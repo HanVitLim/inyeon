@@ -8,6 +8,7 @@ public class InyeonApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(InyeonApplication.class, args);
-    }
 
-}
+    } // end of main()
+
+}  // end of class

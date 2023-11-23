@@ -6,6 +6,11 @@ import java.util.List;
 
 public interface SportsclassService {
     List<SportsclassDTO> sportsclassSelectAll(SportsclassDTO dto);
-    int sportsclassCount();
+    int sportsclassCount(SportsclassDTO dto);
+
+    List<SportsclassDTO> sportsclassName();
+
+    List<SportsclassDTO> sportsclassSelect(SportsclassDTO dto);
+
 
 }

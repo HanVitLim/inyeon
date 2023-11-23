@@ -1,5 +1,6 @@
 package com.example.inyeon.main.dto;
 
+import com.example.inyeon.paging.Criteria;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VoucherDTO {
-
+public class VoucherDTO extends Criteria {
     private String ctprvn_cd;
     private String ctprvn_nm;
     private String signgu_cd;
@@ -20,10 +20,12 @@ public class VoucherDTO {
     private String fclty_detail_addr;
     private String main_item_cd;
     private String main_item_nm;
-    private String fclty_crndt_lo;
-    private String fclty_crndt_la;
+    private String fclty_crdnt_lo;
+    private String fclty_crdnt_la;
     private String course_flag_cd;
     private String course_item_nm;
     private String course_nm;
+
+
 
 }

@@ -8,16 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SportsclassDTO extends Criteria {
+public class SportsclubDTO extends Criteria {
+
     private String item_nm;
     private String subitem_nm;
     private String ctprvn_nm;
     private String signgu_nm;
-    private String clssrm_nm;
+    private String club_nm;
     private String trobl_ty_nm;
     private String oper_time_cn;
-    private String clssrm_intrcn_cn;
-    private String rcrit_pd;
-    private String oper_pd;
-    private String ctprvn_cd;
+    private String club_intrcn_cn;
 }

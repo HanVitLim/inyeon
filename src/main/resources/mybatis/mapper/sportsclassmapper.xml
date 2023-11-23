@@ -10,12 +10,43 @@
                a.signgu_nm as signgu_nm,
                a.clssrm_nm as clssrm_nm
         from sportsclass a join citycode b on b.ctprvn_nm = a.ctprvn_nm
+        <if test="ctprvn_nm != null and item_nm == null">
+            where a.ctprvn_nm = #{ctprvn_nm}
+        </if>
+        <if test="ctprvn_nm == null and item_nm != null">
+            where a.item_nm = #{item_nm}
+        </if>
+        <if test="ctprvn_nm != null and item_nm != null">
+            where a.item_nm = #{item_nm}
+            and a.ctprvn_nm = #{ctprvn_nm}
+        </if>
         order by b.ctprvn_cd , a.signgu_nm
-        limit 10 offset #{page} * 10
+        limit 15 offset(#{page} - 1) * 15
     </select>
 
-    <select id="sportsclassCount" resultType="int">
+    <select id="sportsclassCount" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="int">
         select count(*) from sportsclass
+        <if test="ctprvn_nm != null and item_nm == null">
+            where ctprvn_nm = #{ctprvn_nm}
+        </if>
+        <if test="ctprvn_nm == null and item_nm != null">
+            where item_nm = #{item_nm}
+        </if>
+        <if test="ctprvn_nm != null and item_nm != null">
+            where item_nm = #{item_nm}
+            and ctprvn_nm = #{ctprvn_nm}
+        </if>
+
+    </select>
+
+    <select id="sportsclassName" resultType="com.example.inyeon.main.dto.SportsclassDTO">
+        select a.ctprvn_nm, a.item_nm
+        from sportsclass a join citycode b on a.ctprvn_nm = b.ctprvn_nm
+        order by b.ctprvn_cd, a.item_nm
+    </select>
+
+    <select id="sportsclassSelect" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="com.example.inyeon.main.dto.SportsclassDTO">
+        select * from sportsclass where clssrm_nm = #{clssrm_nm}
     </select>
 
 </mapper>
