@@ -11,4 +11,7 @@ public interface SportsclubService {
 
     int sportsclubCount();
 
+    //검색
+    public List<SportsclubDTO> clubSearch(SportsclubDTO dto);
+
 }

@@ -15,4 +15,6 @@ public interface SportsclubMapper {
 
     int sportsclubCount();
 
+    //검색
+    List<SportsclubDTO> clubSearch(SportsclubDTO dto);
 }
