@@ -97,10 +97,10 @@
 <table>
     <tr>
         <td>종목명</td>
-        <td>부종목명</td>
-        <td>시도명</td>
-        <td>시군구명</td>
-        <td>교실명</td>
+        <td>강좌명</td>
+        <td>지역</td>
+        <td>시군구</td>
+        <td>주소</td>
     </tr>
     <c:forEach var="lista" items="${list}">
         <tr>
@@ -110,7 +110,7 @@
             <td>${lista.signgu_nm}</td>
             <td>
                 <!-- Clickable link to open Kakao Map -->
-                <a href="#" onclick="openKakaoMap('${lista.fclty_crdnt_la}','${lista.fclty_crdnt_lo}')">${lista.fclty_nm}</a>
+                <a href="#" onclick="openKakaoMap('${lista.fclty_crdnt_la}','${lista.fclty_crdnt_lo}')">${lista.fclty_addr}${lista.fclty_detail_addr}</a>
             </td>
         </tr>
     </c:forEach>
