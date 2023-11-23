@@ -20,4 +20,8 @@ public class SportsclassDTO extends Criteria {
     private String rcrit_pd;
     private String oper_pd;
     private String ctprvn_cd;
+
+    // 검색
+    private String keyword;
+    private String type;
 }

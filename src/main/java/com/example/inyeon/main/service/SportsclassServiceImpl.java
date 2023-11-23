@@ -36,4 +36,10 @@ public class SportsclassServiceImpl implements SportsclassService {
     public List<SportsclassDTO> sportsclassSelect(SportsclassDTO dto) {
         return sportsclassMapper.sportsclassSelect(dto);
     }
+
+    @Override
+    public List<SportsclassDTO> classSearch(SportsclassDTO dto) {
+        logger.info("clubSearch");
+        return sportsclassMapper.classSearch(dto);
+    }
 }

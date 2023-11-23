@@ -28,8 +28,8 @@ public class SportsclubServiceImpl implements SportsclubService {
     }
 
     @Override
-    public int sportsclubCount() {
-        return sportsclubMapper.sportsclubCount();
+    public int sportsclubCount(SportsclubDTO dto) {
+        return sportsclubMapper.sportsclubCount(dto);
     }
 
     @Override

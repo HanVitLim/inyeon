@@ -49,4 +49,9 @@ public class VoucherServiceImpl implements VoucherService {
     }
 
 
+    @Override
+    public List<VoucherDTO> voucherSearch(VoucherDTO dto) {
+        logger.info("voucherSearch");
+        return voucherMapper.voucherSearch(dto);
+    }
 }

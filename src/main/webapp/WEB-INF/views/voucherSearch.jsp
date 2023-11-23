@@ -19,10 +19,10 @@
 </head>
 <script>
     $(document).ready(function(){
-        $(".clubname").on("click", function() {
-            var clubName = $(this).text();
-            alert(clubName);
-            window.location.href = "/sportsclubSelect" + '?club_nm=' + encodeURIComponent(clubName);
+        $(".fcltyname").on("click", function() {
+            var fcltyname = $(this).text();
+            alert(fcltyname);
+            window.location.href = "/voucherselect" + '?fclty_nm=' + encodeURIComponent(fcltyname);
         });
     });
 
@@ -55,39 +55,24 @@
 
     <main>
         <div class="main_container">
-                <table>
+            <table>
+                <tr>
+                    <td>지역</td>
+                    <td>시군구</td>
+                    <td>시설명</td>
+                    <td>대표자전화번호</td>
+                    <td>시설주소</td>
+                </tr>
+                <c:forEach var="lista" items="${list}">
                     <tr>
-                        <td>종목명</td>
-                        <td>부종목명</td>
-                        <td>시도명</td>
-                        <td>시군구명</td>
-                        <td>동호회명</td>
+                        <td>${lista.ctprvn_nm}</td>
+                        <td>${lista.signgu_nm}</td>
+                        <td  class="fcltyname">${lista.fclty_nm}</td>
+                        <td>${lista.rprsntv_tel_no}</td>
+                        <td>${lista.fclty_addr},${lista.fclty_detail_addr}</td>
                     </tr>
-                    <c:forEach var="lista" items="${list}">
-                        <tr>
-                            <td>${lista.item_nm}</td>
-                            <td>${lista.subitem_nm}</td>
-                            <td>${lista.ctprvn_nm}</td>
-                            <td>${lista.signgu_nm}</td>
-                            <td class="clubname">${lista.club_nm}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            <div class="ul_container">
-                <ul class="paging">
-                    <c:if test="${paging.prev}">
-
-                        <span><a href='<c:url value="/clubSearch?page=${paging.startPage-1}"/>'><img src="img/prev_icon.png" width="15px">이전</a></span>
-                    </c:if>
-                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                        <span><a href='<c:url value="/clubSearch?page=${num}"/>'>${num}</a></span>
-                    </c:forEach>
-                    <c:if test="${paging.next && paging.endPage>0}">
-                        <span><a href='<c:url value="/clubSearch?page=${paging.endPage+1}"/>'>다음<img src="img/next_icon.png" width="15px"></a></span>
-
-                    </c:if>
-                </ul>
-            </div>
+                </c:forEach>
+            </table>
         </div>
     </main>
     <!-- footer include start -->

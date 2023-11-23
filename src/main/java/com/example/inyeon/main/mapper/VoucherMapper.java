@@ -17,4 +17,7 @@ public interface VoucherMapper {
     List<VoucherDTO> sportsclassName();
 
 //    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
+
+    //검색
+    List<VoucherDTO> voucherSearch(VoucherDTO dto);
 }
