@@ -36,21 +36,33 @@
                 </div>
 
                 <script>
-                    document.getElementById("search_icon").onclick = function() {
+                    // 이벤트 핸들러 함수 정의
+                    function handleSearch() {
                         let type = document.getElementsByName("type")[0].value;
                         let keyword = document.getElementsByName("keyword")[0].value;
 
                         if (type === "sel_voucher") {
                             location.href = "/voucherSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
-                        }else if (type === "sel_class") {
+                        } else if (type === "sel_class") {
                             location.href = "/classSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
-                        }else if (type === "sel_club") {
+                        } else if (type === "sel_club") {
                             location.href = "/clubSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
-                        }else {
+                        } else {
                             alert("검색어를 입력해주세요");
                             console.error("type : ", type);
                         }
-                    };
+                    }
+
+                    // 엔터 키 이벤트 처리
+                    document.getElementById("search_box").addEventListener("keyup", function(event) {
+                        // Enter 키의 keyCode는 13입니다.
+                        if (event.keyCode === 13) {
+                            handleSearch();
+                        }
+                    });
+
+                    // 검색 아이콘 클릭 이벤트 처리
+                    document.getElementById("search_icon").onclick = handleSearch;
                 </script>
 
 

@@ -1,5 +1,6 @@
 <%@ page import="com.example.inyeon.main.dto.SportsclubDTO" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.inyeon.paging.Paging" %><%--
   Created by IntelliJ IDEA.
   User: HHS
   Date: 2023-11-22
@@ -8,22 +9,43 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    Object obj2 = request.getAttribute("keyW");
+    String keyW = (String)obj2;
+    Object obj = request.getAttribute("paging");
+    Paging paging = (Paging) obj;
+    int startPage = paging.getStartPage();
+    int endPage = paging.getEndPage();
+    boolean prev = paging.isPrev();
+    boolean next = paging.isNext();
+%>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mainBody.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/vouchersearchjs.js"></script> <!-- Separate JavaScript file -->
 
     <title>메인페이지</title>
 </head>
 <script>
     $(document).ready(function(){
+
+        var keyW = "<%=keyW%>";
+        var startPage = "<%=startPage%>";
+        var endPage = "<%=endPage%>";
+        var prev = <%=prev%>;
+        var next = <%=next%>;
+
         $(".fcltyname").on("click", function() {
             var fcltyname = $(this).text();
             alert(fcltyname);
             window.location.href = "/voucherselect" + '?fclty_nm=' + encodeURIComponent(fcltyname);
         });
+
+        paging(prev, startPage, endPage, next, keyW);
+
     });
 
     // 현재 페이지 번호 강조
@@ -71,6 +93,11 @@
                     </tr>
                 </c:forEach>
             </table>
+            <div class="ul_container">
+                <ul class="paging" id="paging">
+
+                </ul>
+            </div>
         </div>
     </main>
     <!-- footer include start -->
