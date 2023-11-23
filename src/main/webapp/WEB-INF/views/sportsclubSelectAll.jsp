@@ -4,13 +4,14 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="css/commonBody.css">
+    <link rel="stylesheet" href="css/sportclubSelectAll.css">
 
 </head>
 
 <script>
     $(document).ready(function(){
         $(".clubname").on("click", function() {
+
             var clubName = $(this).text();
             alert("club" + clubName);
             window.location.href = "/sportsclubSelect" + '?club_nm=' + encodeURIComponent(clubName);
@@ -19,24 +20,13 @@
     });
 
 </script>
-
-<style>
-    table, td {
-        border: 1px solid black;
-        text-align: center;
-    }
-
-    table {
-        width: 100%;
-    }
-</style>
 <body>
 <!-- header include start -->
 <jsp:include page="header.jsp"/>
 <!-- header include end -->
 <main>
     <div class="mainContainer">
-    <p>SportsClub</p>
+        <p></p>
     <select>
         <option>종목</option>
         <option>검도</option>
@@ -80,9 +70,9 @@
     <table>
         <tr>
             <td>종목명</td>
-            <td>부종목명</td>
-            <td>시도명</td>
-            <td>시군구명</td>
+            <td>종목상세</td>
+            <td>지역</td>
+            <td>시군구</td>
             <td>동호회명</td>
         </tr>
         <c:forEach var="club" items="${sportsclub}">

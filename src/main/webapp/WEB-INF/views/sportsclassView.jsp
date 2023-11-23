@@ -55,7 +55,6 @@
                 var page = 1;
                 ajaxselect(ctprvn_nm, item_nm, page);
 
-            });
 
             $(".classname").on("click", function() {
                 var classname = $(this).text();
@@ -94,9 +93,9 @@
         <table id="sportsclasslist">
             <tr>
                 <td>종목명</td>
-                <td>부종목명</td>
-                <td>시도명</td>
-                <td>시군구명</td>
+                <td>종목상세</td>
+                <td>지역</td>
+                <td>시군구</td>
                 <td>교실명</td>
             </tr>
             <c:forEach var="lista" items="${list}">
