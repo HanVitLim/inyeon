@@ -19,7 +19,7 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="css/sportclubSelect.css">
+    <link rel="stylesheet" href="css/sportsclubSelect.css">
 
 </head>
 <!--
@@ -44,41 +44,41 @@
 <!-- header include end -->
 <main>
     <div class="mainContainer">
-    <form class="clubSelect" name="clubSelect">
-        <p></p>
-        <table>
-            <tr>
-                <td class="club_title" colspan="3" align="center"><%= dto.getClub_nm() %></td>
-            </tr>
-            <tr>
-                <td class="column1">종목명</td><td class="column2" colspan="2"><%= dto.getItem_nm()%></td>
-            </tr>
-            <tr>
-                <td class="column1">종목상세</td><td class="column2" colspan="2"><%= dto.getSubitem_nm()%></td>
-            </tr>
-            <tr>
-                <td class="column1">지역</td><td class="column2" colspan="2"><%= dto.getCtprvn_nm()%></td>
-            </tr>
-            <tr>
-                <td class="column1">시군구</td><td class="column2" colspan="2"><%= dto.getSigngu_nm()%></td>
-            </tr>
-            <tr>
-                <td class="column1">장애유형</td><td class="column2" colspan="2"><%= dto.getTrobl_ty_nm()%></td>
-            </tr>
-            <tr>
-                <td class="column1">운영시간</td><td class="column2" colspan="2"><%= dto.getOper_time_cn()%></td>
-            </tr>
-            <tr>
-                <td class="club_intro" colspan="3">동호회 소개</td>
-            </tr>
-            <tr>
-                <td  class="column2" colspan="3"><%= dto.getClub_intrcn_cn()%></td>
-            </tr>
-        </table>
-        <div class="back_button" onclick="navigateToPage('/sportsclub')">
-            <button type="button" id="All">목록으로 돌아가기</button><img class= "back" src="img/backward_flip_icon.png">
-        </div>
-</form>
+        <div class="space_fix"></div>
+        <form class="clubSelect" name="clubSelect">
+            <table>
+                <tr>
+                    <td class="club_title" colspan="3" align="center"><%= dto.getClub_nm() %></td>
+                </tr>
+                <tr>
+                    <td class="column1">종목명</td><td class="column2" colspan="2"><%= dto.getItem_nm()%></td>
+                </tr>
+                <tr>
+                    <td class="column1">종목상세</td><td class="column2" colspan="2"><%= dto.getSubitem_nm()%></td>
+                </tr>
+                <tr>
+                    <td class="column1">지역</td><td class="column2" colspan="2"><%= dto.getCtprvn_nm()%></td>
+                </tr>
+                <tr>
+                    <td class="column1">시군구</td><td class="column2" colspan="2"><%= dto.getSigngu_nm()%></td>
+                </tr>
+                <tr>
+                    <td class="column1">장애유형</td><td class="column2" colspan="2"><%= dto.getTrobl_ty_nm()%></td>
+                </tr>
+                <tr>
+                    <td class="column1">운영시간</td><td class="column2" colspan="2"><%= dto.getOper_time_cn()%></td>
+                </tr>
+                <tr>
+                    <td class="club_intro" colspan="3">동호회 소개</td>
+                </tr>
+                <tr>
+                    <td  class="club_intro_text" colspan="3"><%= dto.getClub_intrcn_cn()%></td>
+                </tr>
+            </table>
+            <div class="back_button" onclick="navigateToPage('/sportsclub')">
+                <button type="button" id="All">목록으로 돌아가기</button><img class= "back" src="img/backward_flip_icon.png">
+            </div>
+        </form>
     </div>
 </main>
 <!-- footer include start-->

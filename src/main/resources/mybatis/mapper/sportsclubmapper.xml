@@ -12,7 +12,7 @@
              ,b.ctprvn_cd
         from sportsclub a join citycode b on b.ctprvn_nm = a.ctprvn_nm
         order by b.ctprvn_cd , a.signgu_nm
-            limit 10 offset (#{page} - 1) * 10
+            limit 15 offset (#{page} - 1) * 15
     </select>
 
     <select id="sportsclubSelect" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="com.example.inyeon.main.dto.SportsclubDTO">
@@ -29,6 +29,20 @@
 
     <select id="sportsclubCount" resultType="int">
         select count(*) from sportsclub
+    </select>
+
+    <select id="clubSearch" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="com.example.inyeon.main.dto.SportsclubDTO">
+        select
+            a.item_nm
+             ,a.subitem_nm
+             ,a.ctprvn_nm
+             ,a.signgu_nm
+             ,a.club_nm
+             ,b.ctprvn_cd
+        from sportsclub a join citycode b on b.ctprvn_nm = a.ctprvn_nm
+        where a.item_nm = #{keyword}
+           or a.ctprvn_nm = #{keyword}
+        order by b.ctprvn_cd , a.signgu_nm
     </select>
 
 
