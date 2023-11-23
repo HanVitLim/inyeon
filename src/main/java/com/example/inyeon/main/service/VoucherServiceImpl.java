@@ -1,5 +1,6 @@
 package com.example.inyeon.main.service;
 
+import com.example.inyeon.main.dto.SportsclassDTO;
 import com.example.inyeon.main.dto.VoucherDTO;
 import com.example.inyeon.main.mapper.VoucherMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,26 +29,24 @@ public class VoucherServiceImpl implements VoucherService {
         return voucherMapper.voucherSelect(dto);
     }
 
+
     @Override
     public List<VoucherDTO> sportsclassName() {
+
         return voucherMapper.sportsclassName();
     }
 
     @Override
     public int voucherCount(VoucherDTO dto) {
+
         return voucherMapper.voucherCount(dto);
+
     }
+
 
     @Override
     public List<VoucherDTO> voucherSearch(VoucherDTO dto) {
+        logger.info("voucherSearch");
         return voucherMapper.voucherSearch(dto);
     }
-
-//    @Override
-//    public List<VoucherDTO> setSelectedSigngu(VoucherDTO dto){
-//
-//        return voucherMapper.setSelectedSigngu(dto);
-//    }
-
-
 }

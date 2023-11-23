@@ -1,5 +1,6 @@
 package com.example.inyeon.main.controller;
 
+import com.example.inyeon.main.dto.SportsclubDTO;
 import com.example.inyeon.main.dto.VoucherDTO;
 import com.example.inyeon.main.service.VoucherService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class VoucherController {
 
     Logger logger = LogManager.getLogger(this.getClass());
     private final VoucherService voucherService;
+
     @GetMapping("/voucher")
     public String voucherSelectAll(VoucherDTO dto, Model m){
 
@@ -101,6 +103,43 @@ public class VoucherController {
         m.addAttribute("paging", paging);
 
         return "voucherSearch";
+    }
+    @GetMapping("vouchername")
+    @ResponseBody
+    public Map<String, Object> vouchername(VoucherDTO dto, Model m){
+        Map<String, Object> responseData = new HashMap<>();
+        List<VoucherDTO> list = new ArrayList<>();
+        try {
+            String ctnm = dto.getCtprvn_nm();
+            String itnm = dto.getMain_item_nm();
+
+            if(ctnm.equals("-")){
+                ctnm = null;
+                dto.setCtprvn_nm(ctnm);
+            }
+
+            if(itnm.equals("-")){
+                itnm = null;
+                dto.setMain_item_nm(itnm);
+            }
+
+            int voucherCount = voucherService.voucherCount(dto);
+
+            Paging paging = new Paging();
+            paging.setCri(dto);
+            paging.setTotalCount(voucherCount);
+
+            list = voucherService.voucherSelectAll(dto);
+            responseData.put("paging", paging);
+            responseData.put("list",list);
+
+            logger.info("asdsavpdlwlddadas"+ list);
+
+        }catch(Exception e) {
+            logger.info(e);
+        }
+        return responseData;
+
     }
 
 }

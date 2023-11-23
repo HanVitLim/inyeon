@@ -1,6 +1,5 @@
 package com.example.inyeon.main.service;
 
-import com.example.inyeon.main.dto.SportsclassDTO;
 import com.example.inyeon.main.dto.VoucherDTO;
 
 import java.util.List;
