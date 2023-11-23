@@ -18,28 +18,33 @@
                a.fclty_crdnt_la as fclty_crdnt_la,
                a.course_flag_cd as course_flag_cd
         from sportsvoucher a
+        <if test="ctprvn_nm != null and main_item_nm == null">
+            where a.ctprvn_nm = #{ctprvn_nm}
+        </if>
+        <if test="ctprvn_nm == null and main_item_nm != null">
+            where a.main_item_nm = #{main_item_nm}
+        </if>
+        <if test="ctprvn_nm != null and main_item_nm != null">
+            where a.main_item_nm = #{main_item_nm}
+            and a.ctprvn_nm = #{ctprvn_nm}
+        </if>
+        order by a.ctprvn_cd , a.signgu_nm
+        limit 15 offset(#{page} - 1) * 15
 
-        order by a.signgu_nm
-
-               limit 10 offset (#{page} - 1) * 10
     </select>
 
-    <select id="voucherCount" resultType="int">
+    <select id="voucherCount" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="int">
         select count(*) from sportsvoucher
-    </select>
-
-    <select id="voucherSelect1" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
-        SELECT DISTINCT
-            a.ctprvn_cd as ctprvn_cd,
-            a.ctprvn_nm as ctprvn_nm
-        FROM sportsvoucher a
-    </select>
-
-    <select id="voucherSelect2" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
-        SELECT DISTINCT
-            a.ctprvn_cd as ctprvn_cd,
-            a.signgu_nm as signgu_nm
-        FROM sportsvoucher a
+        <if test="ctprvn_nm != null and main_item_nm == null">
+            where ctprvn_nm = #{ctprvn_nm}
+        </if>
+        <if test="ctprvn_nm == null and main_item_nm != null">
+            where main_item_nm = #{main_item_nm}
+        </if>
+        <if test="ctprvn_nm != null and main_item_nm != null">
+            where main_item_nm = #{main_item_nm}
+            and ctprvn_nm = #{ctprvn_nm}
+        </if>
     </select>
 
     <select id="voucherSelect" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
@@ -60,6 +65,7 @@
         from sportsvoucher a where a.fclty_nm = #{fclty_nm}
     </select>
 
+
     <!-- 검색 -->
     <select id="voucherSearch" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
         select
@@ -76,6 +82,12 @@
            or a.ctprvn_nm = #{keyword}
         order by b.ctprvn_cd , a.signgu_nm
             limit 15 offset (#{page} - 1) * 15
+
+    <select id="sportsclassName" resultType="com.example.inyeon.main.dto.VoucherDTO">
+        select a.ctprvn_nm, a.main_item_nm
+        from sportsvoucher a
+        order by a.ctprvn_cd, a.main_item_nm
+
     </select>
 
 </mapper>

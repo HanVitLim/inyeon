@@ -4,7 +4,7 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="css/sportclubSelectAll.css">
+    <link rel="stylesheet" href="css/sportsclubSelectAll.css">
 
 </head>
 
