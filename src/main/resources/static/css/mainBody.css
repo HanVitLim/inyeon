@@ -59,7 +59,7 @@ main {
     width: 30px;
     margin-left: 15px;
     margin-right: 15px;
-
+    cursor: pointer;
 }
 .botton_container{
     display:grid;

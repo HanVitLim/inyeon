@@ -31,12 +31,12 @@
                         <option value="sel_club">생활체육 동호회</option>
                     </select>
                     <input id="search_box" type="text" name="keyword" placeholder="검색어 입력">
-                    <button type="button" id="searchBtn"></button>
+                    <!--<button type="button" id="searchBtn"></button>-->
                     <img id="search_icon" src="./img/search_icon.png">
                 </div>
 
                 <script>
-                    document.getElementById("searchBtn").onclick = function() {
+                    document.getElementById("search_icon").onclick = function() {
                         let type = document.getElementsByName("type")[0].value;
                         let keyword = document.getElementsByName("keyword")[0].value;
 
