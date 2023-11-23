@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>시도명: ${item.ctprvn_nm}</td>
-                    <td>시군구명: ${item.signgu_nm}</td>
+                    <td>주소: ${item.fclty_addr}, ${item.fclty_detail_addr}</td>
                 </tr>
                 <tr>
                     <td>장애유형명: ${item.fclty_nm}</td>
