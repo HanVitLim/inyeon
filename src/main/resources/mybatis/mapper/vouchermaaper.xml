@@ -42,6 +42,22 @@
         FROM sportsvoucher a
     </select>
 
-
+    <select id="voucherSelect" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
+        select a.ctprvn_cd as ctprvn_cd,
+               a.ctprvn_nm as ctprvn_nm,
+               a.signgu_cd as signgu_cd,
+               a.signgu_nm as signgu_nm,
+               a.fclty_nm as fclty_nm,
+               a.rprsntv_tel_no as rprsntv_tel_no,
+               a.zip_no as zip_no,
+               a.fclty_addr as fclty_addr,
+               a.fclty_detail_addr as fclty_detail_addr,
+               a.main_item_cd as main_item_cd,
+               a.main_item_nm as main_item_nm,
+               a.fclty_crdnt_lo as fclty_crdnt_lo,
+               a.fclty_crdnt_la as fclty_crdnt_la,
+               a.course_flag_cd as course_flag_cd
+        from sportsvoucher a where a.fclty_nm = #{fclty_nm}
+    </select>
 
 </mapper>
