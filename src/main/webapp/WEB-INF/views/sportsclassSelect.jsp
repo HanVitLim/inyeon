@@ -5,7 +5,8 @@
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>Title</title>
     <link rel="stylesheet" href="css/commonBody.css">
-    <script src="js/functionjs.js"></script> <!-- Separate JavaScript file -->
+    <link rel="stylesheet" href="css/sportclubSelect.css">
+
     <script>
         $(document).ready(function(){
 
@@ -14,12 +15,6 @@
             });
         });
     </script>
-    <style>
-        table, tr, td {
-            border : 1px solid black;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -30,31 +25,43 @@
     <div class="mainContainer">
         <table>
             <tr>
-                <td colspan="2" align="center">교실명:${list[0].clssrm_nm}</td>
+                <td class="club_title" colspan="3" align="center">${list[0].clssrm_nm}</td>
             </tr>
             <tr>
-                <td>종목명:${list[0].item_nm}</td>
-                <td>부종목명:${list[0].subitem_nm}</td>
+                <td class="column1">종목명</td><td class="column2" colspan="2">${list[0].item_nm}</td>
             </tr>
             <tr>
-                <td>시도명:${list[0].ctprvn_nm}</td>
-                <td>시군구명:${list[0].signgu_nm}</td>
+                <td class="column1">종목상세</td><td class="column2" colspan="2">${list[0].subitem_nm}</td>
             </tr>
             <tr>
-                <td>장애유형명:${list[0].trobl_ty_nm}</td>
-                <td>운영시간:${list[0].oper_time_cn}</td>
+                <td class="column1">지역</td><td class="column2" colspan="2">${list[0].ctprvn_nm}</td>
             </tr>
             <tr>
-                <td>교실 소개</td>
-                <td>${list[0].clssrm_intrcn_cn}</td>
+                <td class="column1">시군구</td><td class="column2" colspan="2">${list[0].signgu_nm}</td>
             </tr>
             <tr>
-                <td>모집기간:${list[0].oper_pd}</td>
-                <td>운영기간:${list[0].rcrit_pd}</td>
+                <td class="column1">장애유형</td><td class="column2" colspan="2">${list[0].trobl_ty_nm}</td>
+            </tr>
+            <tr>
+                <td class="column1">운영시간</td><td class="column2" colspan="2">${list[0].oper_time_cn}</td>
+            </tr>
+            <tr>
+                <td class="club_intro" colspan="3">교실 소개</td>
+            </tr>
+            <tr>
+                <td class="club_intro_text" colspan="3">${list[0].clssrm_intrcn_cn}</td>
+            </tr>
+            <tr>
+                <td class="column1">모집기간</td><td>${list[0].oper_pd}</td>
+            </tr>
+            <tr>
+                <td class="column1">운영기간</td><td>${list[0].rcrit_pd}</td>
             </tr>
         </table>
-        <button type="button" id="All">목록</button>
-    </div>
+        <div class="back_button">
+             <button type="button" id="All">목록으로 돌아가기</button><img class= "back" src="img/backward_flip_icon.png">
+        </div>
+        </div>
 </main>
 <!-- footer include start-->
 <jsp:include page="footer.jsp" />

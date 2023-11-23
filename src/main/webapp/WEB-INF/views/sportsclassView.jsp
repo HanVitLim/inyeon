@@ -48,13 +48,13 @@
                 ajaxselect(ctprvn_nm, item_nm, page);
             });
 
-            $("#item_nm").change(function (){
+            $("#item_nm").change(function () {
 
                 var ctprvn_nm = $("#ctprvn_nm").val();
                 var item_nm = $("#item_nm").val();
                 var page = 1;
                 ajaxselect(ctprvn_nm, item_nm, page);
-
+            });
 
             $(".classname").on("click", function() {
                 var classname = $(this).text();

@@ -21,7 +21,7 @@
             and a.ctprvn_nm = #{ctprvn_nm}
         </if>
         order by b.ctprvn_cd , a.signgu_nm
-        limit 10 offset(#{page} - 1) * 10
+        limit 15 offset(#{page} - 1) * 15
     </select>
 
     <select id="sportsclassCount" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="int">
@@ -47,7 +47,6 @@
 
     <select id="sportsclassSelect" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="com.example.inyeon.main.dto.SportsclassDTO">
         select * from sportsclass where clssrm_nm = #{clssrm_nm}
-
     </select>
 
 </mapper>

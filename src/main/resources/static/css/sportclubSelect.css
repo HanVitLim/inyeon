@@ -53,6 +53,12 @@ td {
     font-size: 17px;
     background-color: #e6f9ff;
 }
+
+.club_intro_text {
+    text-align: center;
+    font-size: 17px;
+}
+
 .back_button {
     cursor: pointer;
     display: flex;
