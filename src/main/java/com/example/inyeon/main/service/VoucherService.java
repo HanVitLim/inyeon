@@ -1,6 +1,5 @@
 package com.example.inyeon.main.service;
 
-import com.example.inyeon.main.dto.SportsclubDTO;
 import com.example.inyeon.main.dto.VoucherDTO;
 
 import java.util.List;
@@ -12,8 +11,5 @@ public interface VoucherService {
     List<VoucherDTO> voucherSelect2(VoucherDTO dto);
 //    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
     int voucherCount();
-
-    //검색
-    List<VoucherDTO> voucherSearch(VoucherDTO dto);
 
 }
