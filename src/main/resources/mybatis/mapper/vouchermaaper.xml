@@ -31,6 +31,9 @@
         order by a.ctprvn_cd , a.signgu_nm
         limit 15 offset(#{page} - 1) * 15
 
+        order by a.signgu_nm
+
+               limit 10 offset (#{page} - 1) * 10
     </select>
 
     <select id="voucherCount" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="int">
@@ -69,6 +72,24 @@
         select a.ctprvn_nm, a.main_item_nm
         from sportsvoucher a
         order by a.ctprvn_cd, a.main_item_nm
+    </select>
+
+    <!-- 검색 -->
+    <select id="voucherSearch" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
+        select
+             a.ctprvn_nm,
+             a.signgu_nm,
+             a.fclty_nm,
+             a.rprsntv_tel_no,
+             a.fclty_addr,
+             a.fclty_detail_addr,
+             a.main_item_nm,
+             b.ctprvn_cd
+        from sportsvoucher a join citycode b on b.ctprvn_nm = a.ctprvn_nm
+        where a.main_item_nm = #{keyword}
+           or a.ctprvn_nm = #{keyword}
+        order by b.ctprvn_cd , a.signgu_nm
+            limit 15 offset (#{page} - 1) * 15
     </select>
 
 </mapper>

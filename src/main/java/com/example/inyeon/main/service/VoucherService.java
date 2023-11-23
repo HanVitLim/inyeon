@@ -13,4 +13,7 @@ public interface VoucherService {
     List<VoucherDTO> sportsclassName();
     int voucherCount(VoucherDTO dto);
 
+    //검색
+    List<VoucherDTO> voucherSearch(VoucherDTO dto);
+
 }

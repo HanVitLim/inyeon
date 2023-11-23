@@ -29,6 +29,17 @@ public class VoucherServiceImpl implements VoucherService {
         return voucherMapper.voucherSelect(dto);
     }
 
+    @Override
+    public List<VoucherDTO> voucherSelect1(VoucherDTO dto){
+
+        return voucherMapper.voucherSelect1(dto);
+    }
+    @Override
+    public List<VoucherDTO> voucherSelect2(VoucherDTO dto){
+
+        return voucherMapper.voucherSelect2(dto);
+    }
+
 //    @Override
 //    public List<VoucherDTO> setSelectedSigngu(VoucherDTO dto){
 //
@@ -46,6 +57,13 @@ public class VoucherServiceImpl implements VoucherService {
 
         return voucherMapper.voucherCount(dto);
 
+    }
+
+
+    @Override
+    public List<VoucherDTO> voucherSearch(VoucherDTO dto) {
+        logger.info("voucherSearch");
+        return voucherMapper.voucherSearch(dto);
     }
 
 

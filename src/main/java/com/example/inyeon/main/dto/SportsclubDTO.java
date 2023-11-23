@@ -18,4 +18,8 @@ public class SportsclubDTO extends Criteria {
     private String trobl_ty_nm;
     private String oper_time_cn;
     private String club_intrcn_cn;
+
+    // 검색
+    private String keyword;
+    private String type;
 }
