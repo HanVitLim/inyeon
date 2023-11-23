@@ -81,7 +81,7 @@
            or a.ctprvn_nm = #{keyword}
         order by b.ctprvn_cd , a.signgu_nm
             limit 15 offset (#{page} - 1) * 15
-
+    </select>
     <select id="sportsclassName" resultType="com.example.inyeon.main.dto.VoucherDTO">
         select a.ctprvn_nm, a.main_item_nm
         from sportsvoucher a

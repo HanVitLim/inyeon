@@ -1,21 +1,60 @@
+<%@ page import="com.example.inyeon.paging.Paging" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    Object obj = request.getAttribute("paging");
+    Paging paging = (Paging) obj;
+    int startPage = paging.getStartPage();
+    int endPage = paging.getEndPage();
+    boolean prev = paging.isPrev();
+    boolean next = paging.isNext();
+
+%>
 <html>
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/sportsclubSelectAll.css">
+    <script src="js/sportsclubfunctionjs.js"></script> <!-- Separate JavaScript file -->
 
 </head>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
+
+        var startPage = "<%=startPage%>";
+        var endPage = "<%=endPage%>";
+        var prev = "<%=prev%>";
+        var next = "<%=next%>";
+        console.log(startPage);
+        console.log(endPage);
+        console.log(prev);
+        console.log(next);
+
+        paging(prev, startPage, endPage, next);
+
+        $("#ctprvn_nm").change(function (){
+
+            var ctprvn_nm = $("#ctprvn_nm").val();
+            var item_nm = $("#item_nm").val();
+            var page = 1;
+
+            ajaxselect(ctprvn_nm, item_nm, page);
+        });
+
+        $("#item_nm").change(function () {
+
+            var ctprvn_nm = $("#ctprvn_nm").val();
+            var item_nm = $("#item_nm").val();
+            var page = 1;
+            ajaxselect(ctprvn_nm, item_nm, page);
+        });
+
         $(".clubname").on("click", function() {
-
-            var clubName = $(this).text();
-            //alert("club" + clubName);
-            window.location.href = "/sportsclubSelect" + '?club_nm=' + encodeURIComponent(clubName);
-
+            var classname = $(this).text();
+            console.log("class" + classname);
+            classclick(classname);
         });
     });
 
@@ -23,9 +62,10 @@
     document.addEventListener("DOMContentLoaded", function() {
         // 현재 페이지 URL 가져오기
         var currentPage = window.location.href;
-
+        console.log(currentPage);
         // 모든 링크에 대해 반복
         var links = document.querySelectorAll("a");
+        console.log(links);
         links.forEach(function(link) {
             // 링크의 href 속성과 현재 페이지 URL 비교
             if (link.href === currentPage) {
@@ -43,84 +83,46 @@
 <main>
     <div class="mainContainer">
         <div class="select_container">
-            <select>
-                <option>종목</option>
-                <option>검도</option>
-                <option>게이트볼</option>
-                <option>골볼</option>
-                <option>기타</option>
-                <option>농구</option>
-                <option>다트</option>
-                <option>당구</option>
-                <option>댄스스포츠</option>
-                <option>럭비</option>
-                <option>론볼</option>
-                <option>바둑</option>
-                <option>배구</option>
-                <option>배드민턴</option>
-                <option>보치아</option>
-                <option>볼링</option>
-                <option>사격</option>
-                <option>사이클</option>
-                <option>수영</option>
-                <option>슐런</option>
-                <option>스키</option>
-                <option>승마</option>
-                <option>아이스슬레지하키</option>
-                <option>야구소프트볼</option>
-                <option>양궁</option>
-                <option>역도</option>
-                <option>요트</option>
-                <option>육상</option>
-                <option>조정</option>
-                <option>축구</option>
-                <option>컬링</option>
-                <option>탁구</option>
-                <option>태권도</option>
-                <option>테니스</option>
-                <option>파워싸커</option>
-                <option>파워골프</option>
-                <option>펜싱</option>
-                <option>플로어볼</option>
+            <select id="ctprvn_nm" name="ctprvn_nm">
+                <option value="-" selected>지역</option>
+                <c:forEach var="citynamelist" items="${cityname}">
+                    <option value="${citynamelist}">${citynamelist}</option>
+                </c:forEach>
+            </select>
+            <select id="item_nm" name="item_nm">
+                <option value="-" selected>종목</option>
+                <c:forEach var="itemnamelist" items="${itemname}">
+                    <option value="${itemnamelist}">${itemnamelist}</option>
+                </c:forEach>
             </select>
         </div>
-    <table>
-        <tr class="club_title">
-            <td class="club_title_1">종목명</td>
-            <td class="club_title_2">상세종목</td>
-            <td class="club_title_2">지역</td>
-            <td class="club_title_2">시군구</td>
-            <td class="club_title_name">동호회명</td>
-        </tr>
-        <c:forEach var="club" items="${sportsclub}">
-            <tr>
-                <td class="column1">${club.item_nm}</td>
-                <td class="column2">${club.subitem_nm}</td>
-                <td class="column2">${club.ctprvn_nm}</td>
-                <td class="column2">${club.signgu_nm}</td>
-                <td class="clubname">${club.club_nm}</td>
+        <table id="sportsclublist">
+            <tr class="club_title">
+                <td class="club_title_1">종목명</td>
+                <td class="club_title_2">상세종목</td>
+                <td class="club_title_2">지역</td>
+                <td class="club_title_2">시군구</td>
+                <td class="club_title_name">동호회명</td>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach var="club" items="${sportsclub}">
+                <tr>
+                    <td class="column1">${club.item_nm}</td>
+                    <td class="column2">${club.subitem_nm}</td>
+                    <td class="column2">${club.ctprvn_nm}</td>
+                    <td class="column2">${club.signgu_nm}</td>
+                    <td class="clubname">${club.club_nm}</td>
+                </tr>
+            </c:forEach>
+        </table>
         <div class="ul_container">
-            <ul class="paging">
-                <c:if test="${paging.prev}">
+            <ul class="paging" id="paging">
 
-                    <span><a href='<c:url value="/sportsclub?page=${paging.startPage-1}"/>'><img src="img/prev_icon.png" width="15px">이전</a></span>
-                </c:if>
-                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                    <span><a href='<c:url value="/sportsclub?page=${num}"/>'>${num}</a></span>
-                </c:forEach>
-                <c:if test="${paging.next && paging.endPage>0}">
-                    <span><a href='<c:url value="/sportsclub?page=${paging.endPage+1}"/>'>다음<img src="img/next_icon.png" width="15px"></a></span>
-
-                </c:if>
             </ul>
         </div>
     </div>
 </main>
-    <!-- footer include start-->
-    <jsp:include page="footer.jsp" />
-    <!-- footer include end-->
+<!-- footer include start-->
+<jsp:include page="footer.jsp" />
+<!-- footer include end-->
 </body>
 </html>

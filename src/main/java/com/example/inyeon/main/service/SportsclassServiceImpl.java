@@ -29,6 +29,7 @@ public class SportsclassServiceImpl implements SportsclassService {
 
     @Override
     public List<SportsclassDTO> sportsclassName() {
+
         return sportsclassMapper.sportsclassName();
     }
 

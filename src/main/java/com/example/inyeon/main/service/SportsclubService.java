@@ -9,6 +9,7 @@ public interface SportsclubService {
     List<SportsclubDTO> sportsclubSelectAll(SportsclubDTO dto);
     List<SportsclubDTO> sportsclubSelect(SportsclubDTO dto);
 
+    List<SportsclubDTO> sportsclubName();
     int sportsclubCount(SportsclubDTO dto);
 
     //검색

@@ -47,6 +47,7 @@
                         }else if (type === "sel_club") {
                             location.href = "/clubSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
                         }else {
+                            alert("검색어를 입력해주세요");
                             console.error("type : ", type);
                         }
                     };
