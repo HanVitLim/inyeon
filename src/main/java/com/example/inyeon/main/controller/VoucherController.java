@@ -80,7 +80,7 @@ public class VoucherController {
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
 
-        int voucherCount = voucherService.voucherCount();
+        int voucherCount = voucherService.voucherCount(dto);
         logger.info(voucherCount);
 
         int a = dto.getPage();
