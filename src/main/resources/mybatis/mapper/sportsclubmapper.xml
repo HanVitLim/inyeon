@@ -12,7 +12,7 @@
              ,b.ctprvn_cd
         from sportsclub a join citycode b on b.ctprvn_nm = a.ctprvn_nm
         order by b.ctprvn_cd , a.signgu_nm
-            limit 10 offset (#{page} - 1) * 10
+            limit 15 offset (#{page} - 1) * 15
     </select>
 
     <select id="sportsclubSelect" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="com.example.inyeon.main.dto.SportsclubDTO">

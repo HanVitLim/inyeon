@@ -10,6 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 정적자원 resources/static/js/sportsclassfunctionjs.js와 연동 --%>
 <%
     Object obj = request.getAttribute("paging");
     Paging paging = (Paging) obj;
@@ -48,13 +49,13 @@
                 ajaxselect(ctprvn_nm, item_nm, page);
             });
 
-            $("#item_nm").change(function (){
+            $("#item_nm").change(function () {
 
                 var ctprvn_nm = $("#ctprvn_nm").val();
                 var item_nm = $("#item_nm").val();
                 var page = 1;
                 ajaxselect(ctprvn_nm, item_nm, page);
-
+            });
 
             $(".classname").on("click", function() {
                 var classname = $(this).text();

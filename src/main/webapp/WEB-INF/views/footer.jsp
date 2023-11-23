@@ -16,7 +16,7 @@
       <div class="area_user_row">
         <span class="text_bold-13">제작팀</span>
         <ul>
-          <li class="before_list">미취학아동</li>
+          <li class="before_list">인연</li>
         </ul>
       </div>
       <div class="area_user_row">

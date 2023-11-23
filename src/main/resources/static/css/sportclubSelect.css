@@ -15,6 +15,9 @@ main {
     display: flex;
     justify-content: center;
 }
+.space_fix {
+    margin-top: 65px;
+}
 table {
     border-top: 2px solid #d3d5d7;
     border-bottom: 2px solid #d3d5d7;
@@ -34,29 +37,38 @@ td {
     background-color: #ccf2ff;
 }
 .column1 {
-    width: 150px;
+    width: 149px;
     text-align: center;
     font-weight: bold;
     background-color: #e6f9ff;
     border-top: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
     border-right: 1px solid #d3d5d7;
 }
 .column2 {
-    width: 650px;
+    width: 630px;
     border-top: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
+    padding-left: 20px;
 }
 .club_intro {
     text-align: center;
     font-weight: bold;
     font-size: 17px;
     background-color: #e6f9ff;
+    border-top: 1px solid #d3d5d7;
+    border-bottom: 1px solid #d3d5d7;
+}
+.club_intro_text {
+    text-align: center;
+    font-size: 17px;
+    height: 350px;
+    width: 760px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 .back_button {
     cursor: pointer;
     display: flex;
-    width: 210px;
+    justify-content: flex-end;
 }
 #All{
     border: none;
