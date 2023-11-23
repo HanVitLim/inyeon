@@ -13,7 +13,7 @@ public interface SportsclubMapper {
     List<SportsclubDTO> sportsclubSelectAll(SportsclubDTO dto);
     List<SportsclubDTO> sportsclubSelect(SportsclubDTO dto);
 
-    int sportsclubCount();
+    int sportsclubCount(SportsclubDTO dto);
 
     //검색
     List<SportsclubDTO> clubSearch(SportsclubDTO dto);

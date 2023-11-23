@@ -24,8 +24,11 @@ public class SportsclubController {
     @GetMapping("/sportsclub")
     public String sportsclubSelectAll(SportsclubDTO dto, Model m){
 
-        int sportsclubCount = sportsclubService.sportsclubCount();
+        int sportsclubCount = sportsclubService.sportsclubCount(dto);
         logger.info(sportsclubCount);
+
+        int a = dto.getPage();
+        logger.info("controller >>> " + a);
 
         Paging paging = new Paging();
         paging.setCri(dto);
@@ -67,12 +70,24 @@ public class SportsclubController {
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
 
+        int sportsclubCount = sportsclubService.sportsclubCount(dto);
+        logger.info(sportsclubCount);
+
+        int a = dto.getPage();
+        logger.info("controller >>> " + a);
+
+        Paging paging = new Paging();
+        paging.setCri(dto);
+        paging.setTotalCount(sportsclubCount);
+        logger.info(dto.getPage());
+
         List<SportsclubDTO> list = null;
         logger.info("list : " + list);
 
         list = sportsclubService.clubSearch(dto);
 
         m.addAttribute("list", list);
+        m.addAttribute("paging", paging);
 
         return "clubSearch";
     }

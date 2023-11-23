@@ -49,4 +49,19 @@
         select * from sportsclass where clssrm_nm = #{clssrm_nm}
     </select>
 
+    <select id="classSearch" parameterType="com.example.inyeon.main.dto.SportsclassDTO" resultType="com.example.inyeon.main.dto.SportsclassDTO">
+        select
+            a.item_nm
+             ,a.subitem_nm
+             ,a.ctprvn_nm
+             ,a.signgu_nm
+             ,a.clssrm_nm
+             ,b.ctprvn_cd
+        from sportsclass a join citycode b on b.ctprvn_nm = a.ctprvn_nm
+        where a.item_nm = #{keyword}
+           or a.ctprvn_nm = #{keyword}
+        order by b.ctprvn_cd , a.signgu_nm
+            limit 15 offset (#{page} - 1) * 15
+    </select>
+
 </mapper>

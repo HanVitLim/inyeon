@@ -40,7 +40,15 @@
                         let type = document.getElementsByName("type")[0].value;
                         let keyword = document.getElementsByName("keyword")[0].value;
 
-                        location.href = "/clubSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        if (type === "sel_voucher") {
+                            location.href = "/voucherSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else if (type === "sel_class") {
+                            location.href = "/classSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else if (type === "sel_club") {
+                            location.href = "/clubSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else {
+                            console.error("type : ", type);
+                        }
                     };
                 </script>
 
