@@ -26,6 +26,8 @@ public class VoucherDTO extends Criteria {
     private String course_item_nm;
     private String course_nm;
 
-
+    // 검색
+    private String keyword;
+    private String type;
 
 }

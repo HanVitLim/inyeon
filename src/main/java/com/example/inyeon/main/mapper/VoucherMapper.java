@@ -17,4 +17,7 @@ public interface VoucherMapper {
     int voucherCount();
 
 //    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
+
+    //검색
+    List<VoucherDTO> voucherSearch(VoucherDTO dto);
 }
