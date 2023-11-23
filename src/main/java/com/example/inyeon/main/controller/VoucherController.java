@@ -37,4 +37,14 @@ public class VoucherController {
         return "inVoucher";
     }
 
+    @GetMapping("/voucherselect")
+    public String voucherSelect(VoucherDTO dto, Model m){
+
+        List<VoucherDTO> listS = voucherService.voucherSelect(dto);
+
+        m.addAttribute("listS",listS);
+
+        return "inVoucherSelect";
+    }
+
 }
