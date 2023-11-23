@@ -49,4 +49,5 @@ public class VoucherServiceImpl implements VoucherService {
         logger.info("voucherSearch");
         return voucherMapper.voucherSearch(dto);
     }
+
 }
