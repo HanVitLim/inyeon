@@ -5,6 +5,7 @@ function classclick(classname){
 
     function selectCity(data){
 
+    
         var data1 = data.list;
         var paging = data.paging;
         console.log(data1[0]);
