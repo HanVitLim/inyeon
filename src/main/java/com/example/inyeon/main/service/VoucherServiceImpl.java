@@ -29,14 +29,8 @@ public class VoucherServiceImpl implements VoucherService {
     }
 
     @Override
-    public List<VoucherDTO> voucherSelect1(VoucherDTO dto){
-
-        return voucherMapper.voucherSelect1(dto);
-    }
-    @Override
-    public List<VoucherDTO> voucherSelect2(VoucherDTO dto){
-
-        return voucherMapper.voucherSelect2(dto);
+    public List<VoucherDTO> sportsclassName() {
+        return voucherMapper.sportsclassName();
     }
 
 //    @Override
@@ -46,10 +40,16 @@ public class VoucherServiceImpl implements VoucherService {
 //    }
 
     @Override
-    public int voucherCount() {
+    public int voucherCount(VoucherDTO dto) {
 
-        return voucherMapper.voucherCount();
+        return voucherMapper.voucherCount(dto);
 
+    }
+
+    @Override
+    public List<VoucherDTO> voucherSearch(VoucherDTO dto) {
+        logger.info("voucherSearch");
+        return voucherMapper.voucherSearch(dto);
     }
 
 }

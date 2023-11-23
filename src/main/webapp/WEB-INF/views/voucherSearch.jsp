@@ -62,6 +62,7 @@
                     <td>시설명</td>
                     <td>대표자전화번호</td>
                     <td>시설주소</td>
+                    <td>종목명</td>
                 </tr>
                 <c:forEach var="lista" items="${list}">
                     <tr>
@@ -70,6 +71,7 @@
                         <td  class="fcltyname">${lista.fclty_nm}</td>
                         <td>${lista.rprsntv_tel_no}</td>
                         <td>${lista.fclty_addr},${lista.fclty_detail_addr}</td>
+                        <td>${lista.main_item_nm}</td>
                     </tr>
                 </c:forEach>
             </table>
