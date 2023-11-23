@@ -1,6 +1,7 @@
 package com.example.inyeon.main.controller;
 
 import com.example.inyeon.main.dto.SportsclassDTO;
+import com.example.inyeon.main.dto.SportsclubDTO;
 import com.example.inyeon.main.service.SportsclassService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -125,4 +126,32 @@ public class SportsclassController {
         return "sportsclassSelect";
     }
 
+    // 검색
+    @GetMapping("/classSearch")
+    public String classSearch(Model m, SportsclassDTO dto) {
+        logger.info("classSearch 진입 : ");
+        logger.info(dto.getKeyword());
+        logger.info(dto.getType());
+
+        int sportsclassCount = sportsclassService.sportsclassCount(dto);
+        logger.info(sportsclassCount);
+
+        int a = dto.getPage();
+        logger.info("controller >>> " + a);
+
+        Paging paging = new Paging();
+        paging.setCri(dto);
+        paging.setTotalCount(sportsclassCount);
+        logger.info(dto.getPage());
+
+        List<SportsclassDTO> list = null;
+        logger.info("list : " + list);
+
+        list = sportsclassService.classSearch(dto);
+
+        m.addAttribute("list", list);
+        m.addAttribute("paging", paging);
+
+        return "classSearch";
+    }
 }
