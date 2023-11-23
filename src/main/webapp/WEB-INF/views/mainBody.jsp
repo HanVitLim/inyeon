@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.example.inyeon.main.dto.SportsclubDTO" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: HHS
   Date: 2023-11-22
@@ -23,15 +24,34 @@
         <main>
             <div class="main_container">
                 <div class="search">
-                    <select>
+                    <select name="type">
                         <option value="sel_default">메뉴 선택</option>
                         <option value="sel_voucher">강좌이용권 시설정보</option>
                         <option value="sel_class">생활체육 교실</option>
                         <option value="sel_club">생활체육 동호회</option>
                     </select>
-                    <input id="search_box" type="text" placeholder="검색어 입력">
+                    <input id="search_box" type="text" name="keyword" placeholder="검색어 입력">
+                    <button type="button" id="searchBtn"></button>
                     <img id="search_icon" src="./img/search_icon.png">
                 </div>
+
+                <script>
+                    document.getElementById("searchBtn").onclick = function() {
+                        let type = document.getElementsByName("type")[0].value;
+                        let keyword = document.getElementsByName("keyword")[0].value;
+
+                        if (type === "sel_voucher") {
+                            location.href = "/voucherSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else if (type === "sel_class") {
+                            location.href = "/classSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else if (type === "sel_club") {
+                            location.href = "/clubSearch?num=1" + "&type=" + type + "&keyword=" + keyword;
+                        }else {
+                            console.error("type : ", type);
+                        }
+                    };
+                </script>
+
 
                 <div class="botton_container">
                     <div id="sportvoucher_div">
