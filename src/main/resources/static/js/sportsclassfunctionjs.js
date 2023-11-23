@@ -3,7 +3,6 @@ function classclick(classname){
     window.location.href = "/sportsclassselect" + '?clssrm_nm=' + encodeURIComponent(classname);
 }
 
-
     function selectCity(data){
 
         var data1 = data.list;
@@ -65,7 +64,6 @@ function classclick(classname){
 
         if (prev) {
             $("#paging").append('<span><a href="/sportsclass?page=' + (parseInt(startPage) - 1) + '">이전</a></span>');
-
         }
         // 페이지 숫자 링크
         for (var num = startPage; num <= endPage; num++) {
