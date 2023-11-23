@@ -14,10 +14,10 @@ public class SportsclassDTO extends Criteria {
     private String ctprvn_nm;
     private String signgu_nm;
     private String clssrm_nm;
-    private String robl_ty_nm;
+    private String trobl_ty_nm;
     private String oper_time_cn;
     private String clssrm_intrcn_cn;
-    private String icrit_pd;
+    private String rcrit_pd;
     private String oper_pd;
     private String ctprvn_cd;
 }
