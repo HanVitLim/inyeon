@@ -8,6 +8,7 @@
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="your_external_script.js"></script>
+    <link rel="stylesheet" href="css/commonBody.css">
     <style>
         table, th, td {
             border: 1px solid black;
@@ -15,6 +16,11 @@
     </style>
 </head>
 <body>
+<!-- header include start -->
+<jsp:include page="header.jsp"/>
+<!-- header include end -->
+<main>
+    <div class="mainContainer">
 
 <c:if test="${not empty listS}">
     <c:set var="firstItem" value="${listS[0]}" />
@@ -92,6 +98,10 @@
         var boundsStr = bounds.toString();
     }
 </script>
-
+    </div>
+    </main>
+<!-- footer include start-->
+<jsp:include page="footer.jsp" />
+<!-- footer include end-->
 </body>
 </html>
