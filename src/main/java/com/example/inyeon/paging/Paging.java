@@ -2,6 +2,8 @@ package com.example.inyeon.paging;
 
 import com.example.inyeon.main.dto.SportsclassDTO;
 import com.example.inyeon.main.dto.SportsclubDTO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Paging {
     private int totalCount; // 게시판 전체 데이터 개수
@@ -14,6 +16,7 @@ public class Paging {
 
     private Criteria cri;
 
+    Logger logger = LogManager.getLogger(this.getClass());
 
     public int getTotalCount() {
         return totalCount;
@@ -28,19 +31,30 @@ public class Paging {
     private void pagingData() {
 
         endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
+        logger.info("pagingData >>> : " + cri.getPage() );
+        logger.info("pagingData >>> : " + endPage );
+
         // endPage = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 개수) * 화면에 보여질 페이지 번호의 개수
         startPage = (endPage - displayPageNum) + 1;
+        logger.info("pagingData >>> : " + startPage );
+
         // startPage = (끝 페이지 번호 - 화면에 보여질 페이지 번호의 개수) + 1
 
         int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
+
+        logger.info("pagingData >>> : " + tempEndPage);
+
         if(endPage > tempEndPage) {
             endPage = tempEndPage;
         }
+        logger.info("pagingData >>> : " + endPage);
+
         // 마지막 페이지 번호 = 총 게시글 수 / 한 페이지당 보여줄 게시글의개수
 
         prev = startPage == 1 ? false : true;
         // 이전 버튼 생성 여부 = 시작 페이지 번호가 1과 같으면 false, 아니면 true
         next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
+
         // 다음 버튼 생성 여부 = 끝 페이지 번호 * 한 페이지당 보여줄 게시글의 개수가 총 게시글의 수보다
         // 크거나 같으면 false, 아니면 true
     }

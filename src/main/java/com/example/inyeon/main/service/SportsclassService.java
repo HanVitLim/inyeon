@@ -10,5 +10,7 @@ public interface SportsclassService {
 
     List<SportsclassDTO> sportsclassName();
 
+    List<SportsclassDTO> sportsclassSelect(SportsclassDTO dto);
+
 
 }

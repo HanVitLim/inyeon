@@ -30,15 +30,8 @@ public class SportsclassController {
         String ctnm = dto.getCtprvn_nm();
         String itnm = dto.getItem_nm();
 
-        if(ctnm == null){
-            ctnm = "rmsid";
-            dto.setCtprvn_nm(ctnm);
-        }
-
-        if(itnm == "-"){
-            itnm = "rmsid";
-            dto.setItem_nm(itnm);
-        }
+        logger.info(ctnm);
+        logger.info(itnm);
 
         int sportsclassCount = sportsclassService.sportsclassCount(dto);
         logger.info(sportsclassCount);
@@ -46,10 +39,12 @@ public class SportsclassController {
         logger.info(dto.getCtprvn_nm());
         logger.info(dto.getItem_nm());
 
+        int a = dto.getPage();
+        logger.info("controller - > " + a);
 
         Paging paging = new Paging();
         paging.setCri(dto);
-        paging.setTotalCount(sportsclassCount - 10);
+        paging.setTotalCount(sportsclassCount);
         logger.info(dto.getPage());
         List<SportsclassDTO> list = sportsclassService.sportsclassSelectAll(dto);
         List<SportsclassDTO> listname = sportsclassService.sportsclassName();
@@ -86,13 +81,13 @@ public class SportsclassController {
             String ctnm = dto.getCtprvn_nm();
             String itnm = dto.getItem_nm();
 
-            if(ctnm == "-"){
-                ctnm = "rmsid";
+            if(ctnm.equals("-")){
+                ctnm = null;
                 dto.setCtprvn_nm(ctnm);
             }
 
-            if(itnm == "-"){
-                itnm = "rmsid";
+            if(itnm.equals("-")){
+                itnm = null;
                 dto.setItem_nm(itnm);
             }
 
@@ -101,11 +96,9 @@ public class SportsclassController {
 
             logger.info(dto.getCtprvn_nm());
 
-
-
             Paging paging = new Paging();
             paging.setCri(dto);
-            paging.setTotalCount(sportsclassCount - 10);
+            paging.setTotalCount(sportsclassCount);
 
             logger.info(dto.getCtprvn_nm());
             logger.info(dto.getItem_nm());
@@ -122,6 +115,14 @@ public class SportsclassController {
         return responseData;
     }
 
+    @GetMapping("/sportsclassselect")
+    public String sportsclassSelect(SportsclassDTO dto, Model m){
 
+        List<SportsclassDTO> list = sportsclassService.sportsclassSelect(dto);
+
+        m.addAttribute("list", list);
+
+        return "sportsclassSelect";
+    }
 
 }

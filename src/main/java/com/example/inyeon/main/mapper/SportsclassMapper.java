@@ -15,5 +15,6 @@ public interface SportsclassMapper {
 
     List<SportsclassDTO> sportsclassName();
 
+    List<SportsclassDTO> sportsclassSelect(SportsclassDTO dto);
 
 }
