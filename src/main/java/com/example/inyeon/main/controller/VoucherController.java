@@ -75,49 +75,13 @@ public class VoucherController {
         return "inVoucherSelect";
     }
 
-    @GetMapping("vouchername")
-    @ResponseBody
-    public Map<String, Object> vouchername(VoucherDTO dto, Model m){
-        Map<String, Object> responseData = new HashMap<>();
-        List<VoucherDTO> list = new ArrayList<>();
-        try {
-            String ctnm = dto.getCtprvn_nm();
-            String itnm = dto.getMain_item_nm();
-
-            if(ctnm.equals("-")){
-                ctnm = null;
-                dto.setCtprvn_nm(ctnm);
-            }
-
-            if(itnm.equals("-")){
-                itnm = null;
-                dto.setMain_item_nm(itnm);
-            }
-
-            int voucherCount = voucherService.voucherCount(dto);
-
-            Paging paging = new Paging();
-            paging.setCri(dto);
-            paging.setTotalCount(voucherCount);
-
-            list = voucherService.voucherSelectAll(dto);
-            responseData.put("paging", paging);
-            responseData.put("list",list);
-
-            logger.info("asdsavpdlwlddadas"+ list);
-
-        }catch(Exception e) {
-            logger.info(e);
-        }
-        return responseData;
-    }
-
     // 검색
     @GetMapping("/voucherSearch")
     public String voucherSearch(Model m, VoucherDTO dto) {
         logger.info("voucherSearch 진입 : ");
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
+        String keyW = dto.getKeyword();
 
         int voucherCount = voucherService.voucherCount(dto);
         logger.info(voucherCount);
@@ -134,8 +98,8 @@ public class VoucherController {
         logger.info("list : " + list);
 
         list = voucherService.voucherSearch(dto);
-        logger.info("list.size >> " + list.size());
 
+        m.addAttribute("keyW",keyW);
         m.addAttribute("list", list);
         m.addAttribute("paging", paging);
 

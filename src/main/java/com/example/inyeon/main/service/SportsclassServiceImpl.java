@@ -40,7 +40,6 @@ public class SportsclassServiceImpl implements SportsclassService {
 
     @Override
     public List<SportsclassDTO> classSearch(SportsclassDTO dto) {
-        logger.info("clubSearch");
         return sportsclassMapper.classSearch(dto);
     }
 }

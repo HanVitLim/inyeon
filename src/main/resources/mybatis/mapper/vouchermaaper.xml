@@ -45,6 +45,10 @@
             where main_item_nm = #{main_item_nm}
             and ctprvn_nm = #{ctprvn_nm}
         </if>
+        <if test="keyword != null">
+            where main_item_nm = #{keyword}
+            or ctprvn_nm = #{keyword}
+        </if>
     </select>
 
     <select id="voucherSelect" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
