@@ -23,7 +23,7 @@
 <html>
 <head>
     <title>Title</title>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclassView.css">
     <script src="js/sportsclassfunctionjs.js"></script> <!-- Separate JavaScript file -->
     <script>
