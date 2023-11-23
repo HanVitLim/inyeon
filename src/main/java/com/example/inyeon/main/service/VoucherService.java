@@ -7,7 +7,7 @@ import java.util.List;
 public interface VoucherService {
     List<VoucherDTO> voucherSelectAll(VoucherDTO dto);
     List<VoucherDTO> voucherSelect(VoucherDTO dto);
-    //    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
+
     List<VoucherDTO> sportsclassName();
     int voucherCount(VoucherDTO dto);
 

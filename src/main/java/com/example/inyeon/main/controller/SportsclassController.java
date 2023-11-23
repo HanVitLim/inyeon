@@ -60,8 +60,8 @@ public class SportsclassController {
             itemname.add(itemN);
         }
 
-         cityname = cityname.stream().distinct().collect(Collectors.toList());
-         itemname = itemname.stream().distinct().collect(Collectors.toList());
+        cityname = cityname.stream().distinct().collect(Collectors.toList());
+        itemname = itemname.stream().distinct().collect(Collectors.toList());
 
         m.addAttribute("cityname", cityname);
         m.addAttribute("itemname",itemname);
@@ -132,6 +132,7 @@ public class SportsclassController {
         logger.info("classSearch 진입 : ");
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
+        String keyW = dto.getKeyword();
 
         int sportsclassCount = sportsclassService.sportsclassCount(dto);
         logger.info(sportsclassCount);
@@ -149,6 +150,7 @@ public class SportsclassController {
 
         list = sportsclassService.classSearch(dto);
 
+        m.addAttribute("keyW",keyW);
         m.addAttribute("list", list);
         m.addAttribute("paging", paging);
 

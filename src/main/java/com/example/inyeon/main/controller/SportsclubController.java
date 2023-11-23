@@ -1,5 +1,6 @@
 package com.example.inyeon.main.controller;
 
+import com.example.inyeon.main.dto.SportsclassDTO;
 import com.example.inyeon.main.dto.SportsclubDTO;
 import com.example.inyeon.main.service.SportsclubService;
 import com.example.inyeon.paging.Paging;
@@ -10,8 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,11 +41,73 @@ public class SportsclubController {
         paging.setTotalCount(sportsclubCount);
         logger.info(dto.getPage());
         List<SportsclubDTO> sportsclubselectAll = sportsclubService.sportsclubSelectAll(dto);
+        List<SportsclubDTO> listname = sportsclubService.sportsclubName();
 
+        List<String> cityname = new ArrayList();
+        List<String> itemname = new ArrayList();
+
+        for(int i = 0; i < listname.size(); i++){
+            String cityN = listname.get(i).getCtprvn_nm();
+            String itemN = listname.get(i).getItem_nm();
+            cityname.add(cityN);
+            itemname.add(itemN);
+        }
+
+        cityname = cityname.stream().distinct().collect(Collectors.toList());
+        itemname = itemname.stream().distinct().collect(Collectors.toList());
+
+        m.addAttribute("cityname", cityname);
+        m.addAttribute("itemname", itemname);
         m.addAttribute("sportsclub", sportsclubselectAll);
         m.addAttribute("paging", paging);
 
         return "sportsclubSelectAll";
+    }
+
+    @GetMapping("sportsclubcityname")
+    @ResponseBody
+    public Map<String, Object> sportsclubcityname(SportsclubDTO dto, Model m){
+        Map<String, Object> responseData = new HashMap<>();
+        List<SportsclubDTO> list = new ArrayList<>();
+        try {
+            logger.info(dto.getCtprvn_nm());
+            logger.info(dto.getItem_nm());
+
+            String ctnm = dto.getCtprvn_nm();
+            String itnm = dto.getItem_nm();
+
+            if(ctnm.equals("-")){
+                ctnm = null;
+                dto.setCtprvn_nm(ctnm);
+            }
+
+            if(itnm.equals("-")){
+                itnm = null;
+                dto.setItem_nm(itnm);
+            }
+
+            int sportsclubCount = sportsclubService.sportsclubCount(dto);
+            logger.info(sportsclubCount);
+
+            logger.info(dto.getCtprvn_nm());
+
+            Paging paging = new Paging();
+            paging.setCri(dto);
+            paging.setTotalCount(sportsclubCount);
+
+            logger.info(dto.getCtprvn_nm());
+            logger.info(dto.getItem_nm());
+
+
+            list = sportsclubService.sportsclubSelectAll(dto);
+            responseData.put("paging", paging);
+            responseData.put("list",list);
+
+        }catch(Exception e) {
+            logger.info(e);
+        }
+
+        return responseData;
     }
 
     // 조건 조회
@@ -69,7 +137,7 @@ public class SportsclubController {
         logger.info("clubSearch 진입 : ");
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
-
+        String keyW = dto.getKeyword();
         int sportsclubCount = sportsclubService.sportsclubCount(dto);
         logger.info(sportsclubCount);
 
@@ -86,6 +154,7 @@ public class SportsclubController {
 
         list = sportsclubService.clubSearch(dto);
 
+        m.addAttribute("keyW",keyW);
         m.addAttribute("list", list);
         m.addAttribute("paging", paging);
 

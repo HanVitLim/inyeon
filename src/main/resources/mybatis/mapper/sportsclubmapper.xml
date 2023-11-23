@@ -4,12 +4,12 @@
 <mapper namespace="com.example.inyeon.main.mapper.SportsclubMapper">
     <select id="sportsclubSelectAll" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="com.example.inyeon.main.dto.SportsclubDTO">
         select
-              a.item_nm
-             ,a.subitem_nm
-             ,a.ctprvn_nm
-             ,a.signgu_nm
-             ,a.club_nm
-             ,b.ctprvn_cd
+        a.item_nm
+        ,a.subitem_nm
+        ,a.ctprvn_nm
+        ,a.signgu_nm
+        ,a.club_nm
+        ,b.ctprvn_cd
         from sportsclub a join citycode b on b.ctprvn_nm = a.ctprvn_nm
         <if test="ctprvn_nm != null and item_nm == null">
             where a.ctprvn_nm = #{ctprvn_nm}
@@ -22,7 +22,7 @@
             and a.ctprvn_nm = #{ctprvn_nm}
         </if>
         order by b.ctprvn_cd , a.signgu_nm
-            limit 15 offset (#{page} - 1) * 15
+        limit 15 offset (#{page} - 1) * 15
     </select>
 
     <select id="sportsclubSelect" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="com.example.inyeon.main.dto.SportsclubDTO">
@@ -37,17 +37,27 @@
         from sportsclub a where a.club_nm = #{club_nm}
     </select>
 
-    <select id="sportsclubCount" resultType="int">
+    <select id="sportsclubName" resultType="com.example.inyeon.main.dto.SportsclubDTO">
+        select a.ctprvn_nm, a.item_nm
+        from sportsclub a join citycode b on a.ctprvn_nm = b.ctprvn_nm
+        order by b.ctprvn_cd, a.item_nm
+    </select>
+
+    <select id="sportsclubCount" parameterType="com.example.inyeon.main.dto.SportsclubDTO" resultType="int">
         select count(*) from sportsclub
         <if test="ctprvn_nm != null and item_nm == null">
-            where a.ctprvn_nm = #{ctprvn_nm}
+            where ctprvn_nm = #{ctprvn_nm}
         </if>
         <if test="ctprvn_nm == null and item_nm != null">
-            where a.item_nm = #{item_nm}
+            where item_nm = #{item_nm}
         </if>
         <if test="ctprvn_nm != null and item_nm != null">
             where item_nm = #{item_nm}
             and ctprvn_nm = #{ctprvn_nm}
+        </if>
+        <if test="keyword != null">
+            where item_nm = #{keyword}
+            or ctprvn_nm = #{keyword}
         </if>
     </select>
 
@@ -63,7 +73,7 @@
         where a.item_nm = #{keyword}
            or a.ctprvn_nm = #{keyword}
         order by b.ctprvn_cd , a.signgu_nm
-        limit 15 offset (#{page} - 1) * 15
+            limit 15 offset (#{page} - 1) * 15
     </select>
 
 

@@ -1,5 +1,6 @@
 <%@ page import="com.example.inyeon.main.dto.SportsclubDTO" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.inyeon.paging.Paging" %><%--
   Created by IntelliJ IDEA.
   User: HHS
   Date: 2023-11-22
@@ -8,22 +9,43 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    Object obj2 = request.getAttribute("keyW");
+    String keyW = (String)obj2;
+    Object obj = request.getAttribute("paging");
+    Paging paging = (Paging) obj;
+    int startPage = paging.getStartPage();
+    int endPage = paging.getEndPage();
+    boolean prev = paging.isPrev();
+    boolean next = paging.isNext();
+%>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mainBody.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    <script src="js/clubsearchjs.js"></script> <!-- Separate JavaScript file -->
     <title>메인페이지</title>
 </head>
 <script>
     $(document).ready(function(){
+
+        var keyW = "<%=keyW%>";
+        var startPage = "<%=startPage%>";
+        var endPage = "<%=endPage%>";
+        var prev = <%=prev%>;
+        var next = <%=next%>;
+        console.log(next);
+
         $(".clubname").on("click", function() {
             var clubName = $(this).text();
             alert(clubName);
             window.location.href = "/sportsclubSelect" + '?club_nm=' + encodeURIComponent(clubName);
         });
+
+        paging(prev, startPage, endPage, next, keyW);
+
     });
 
     // 현재 페이지 번호 강조
@@ -55,37 +77,27 @@
 
     <main>
         <div class="main_container">
-                <table>
+            <table>
+                <tr>
+                    <td>종목명</td>
+                    <td>부종목명</td>
+                    <td>시도명</td>
+                    <td>시군구명</td>
+                    <td>동호회명</td>
+                </tr>
+                <c:forEach var="lista" items="${list}">
                     <tr>
-                        <td>종목명</td>
-                        <td>부종목명</td>
-                        <td>시도명</td>
-                        <td>시군구명</td>
-                        <td>동호회명</td>
+                        <td>${lista.item_nm}</td>
+                        <td>${lista.subitem_nm}</td>
+                        <td>${lista.ctprvn_nm}</td>
+                        <td>${lista.signgu_nm}</td>
+                        <td class="clubname">${lista.club_nm}</td>
                     </tr>
-                    <c:forEach var="lista" items="${list}">
-                        <tr>
-                            <td>${lista.item_nm}</td>
-                            <td>${lista.subitem_nm}</td>
-                            <td>${lista.ctprvn_nm}</td>
-                            <td>${lista.signgu_nm}</td>
-                            <td class="clubname">${lista.club_nm}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
+                </c:forEach>
+            </table>
             <div class="ul_container">
-                <ul class="paging">
-                    <c:if test="${paging.prev}">
+                <ul class="paging" id="paging">
 
-                        <span><a href='<c:url value="/clubSearch?page=${paging.startPage-1}"/>'><img src="img/prev_icon.png" width="15px">이전</a></span>
-                    </c:if>
-                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                        <span><a href='<c:url value="/clubSearch?page=${num}"/>'>${num}</a></span>
-                    </c:forEach>
-                    <c:if test="${paging.next && paging.endPage>0}">
-                        <span><a href='<c:url value="/clubSearch?page=${paging.endPage+1}"/>'>다음<img src="img/next_icon.png" width="15px"></a></span>
-
-                    </c:if>
                 </ul>
             </div>
         </div>
@@ -94,6 +106,5 @@
     <jsp:include page="footer.jsp" />
     <!-- footer include end -->
 </div>
-
 </body>
 </html>
