@@ -48,6 +48,8 @@ function classclick(classname){
         // 페이지 숫자 링크
         for (var num = paging.startPage; num <= paging.endPage; num++) {
             $("#paging").append('<span><a href="javascript:void(0)" onclick="ajaxselect(\'' + ctprvn_nm + '\', \'' + item_nm + '\', ' + num + ')">' + num + '</a></span>');
+
+            num_color(paging.cri.page, num);
         }
         // 다음 페이지 링크
         if (paging.next && paging.endPage > 0) {
@@ -69,6 +71,7 @@ function classclick(classname){
         for (var num = startPage; num <= endPage; num++) {
             $("#paging").append('<span><a href="/sportsclub?page=' + num + '">' + num + '</a></span>');
         }
+
         // 다음 페이지 링크
         if (next && endPage > 0) {
             $("#paging").append('<span><a href="/sportsclub?page=' + (parseInt(endPage) + 1) + '">다음<img src="img/next_icon.png" width="15px"></a></span>');
@@ -105,4 +108,34 @@ function classclick(classname){
         });
 
     }
+function num_color(cur_page, cur_num ) {
+    // 현재 페이지 URL 가져오기
+    var currentPage = cur_page;
+    var num = cur_num;
+    // 모든 링크에 대해 반복
+    var links = document.querySelectorAll("a");
+    links.forEach(function(link, index) {
+        console.log("index : ", index);
+        // 링크의 href 속성과 현재 페이지 URL 비교
+        if (num === currentPage) {
+            // 현재 페이지와 일치하면 클래스 추가
+            if(currentPage > 10){
+                var currentPage_unit = currentPage % 10;
+                if(currentPage_unit!==0){
+                    if(index === currentPage_unit+3){
+                        link.classList.add("current-page");
+                    }
+                } else {
+                    if(index === currentPage_unit+13){
+                        link.classList.add("current-page");
+                    }
+                }
+            }else {
+                if(index-2 === currentPage){
+                    link.classList.add("current-page");
+                }
+            }
+        }
+    });
+};
 

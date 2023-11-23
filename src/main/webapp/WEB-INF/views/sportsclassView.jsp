@@ -22,8 +22,8 @@
 %>
 <html>
 <head>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>Title</title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclassView.css">
     <script src="js/sportsclassfunctionjs.js"></script> <!-- Separate JavaScript file -->
     <script>
@@ -62,8 +62,8 @@
                 console.log("class" + classname);
                 window.location.href = "/sportsclassselect" + '?clssrm_nm=' + encodeURIComponent(classname);
             });
-
         });
+
         // 현재 페이지 번호 강조
         document.addEventListener("DOMContentLoaded", function() {
             // 현재 페이지 URL 가져오기
@@ -71,7 +71,9 @@
 
             // 모든 링크에 대해 반복
             var links = document.querySelectorAll("a");
+            console.log("links ::", links);
             links.forEach(function(link) {
+                console.log("currentPage ::: ", currentPage);
                 // 링크의 href 속성과 현재 페이지 URL 비교
                 if (link.href === currentPage) {
                     // 현재 페이지와 일치하면 클래스 추가
@@ -81,7 +83,6 @@
         });
     </script>
 </head>
-
 <body>
 <!-- header include start -->
 <jsp:include page="header.jsp"/>

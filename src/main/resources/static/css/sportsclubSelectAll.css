@@ -24,6 +24,7 @@ select {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #fdfdfe;
+    outline: none;
 }
 .select_container {
     margin-top: 25px;
@@ -119,6 +120,8 @@ td {
     font-weight: bold;
     text-decoration: none;
     color: black;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .paging > span > a:visited {
     color: black;
