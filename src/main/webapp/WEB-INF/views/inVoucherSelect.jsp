@@ -7,7 +7,6 @@
 <head>
     <title>SportsClub</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="your_external_script.js"></script>
     <link rel="stylesheet" href="css/commonBody.css">
     <style>
         table, th, td {
@@ -28,23 +27,23 @@
         <form class="clubSelect" name="clubSelect">
             <table>
                 <tr>
-                    <td colspan="2" align="center">동호회명: ${item.fclty_nm}</td>
+                    <td colspan="2" align="center">시설명 : ${item.fclty_nm}</td>
                 </tr>
                 <tr>
-                    <td>종목명: ${item.fclty_nm}</td>
-                    <td>부종목명: ${item.fclty_nm}</td>
+                    <td>시 도</td>
+                    <td>${item.ctprvn_nm}</td>
                 </tr>
                 <tr>
-                    <td>시도명: ${item.ctprvn_nm}</td>
-                    <td>주소: ${item.fclty_addr}, ${item.fclty_detail_addr}</td>
+                    <td>전화번호</td>
+                    <td>${item.rprsntv_tel_no }</td>
                 </tr>
                 <tr>
-                    <td>장애유형명: ${item.fclty_nm}</td>
-                    <td>운영시간: ${item.fclty_nm}</td>
+                    <td>주소</td>
+                    <td>${item.fclty_addr}, ${item.fclty_detail_addr}</td>
                 </tr>
                 <tr>
-                    <td>동호회 소개</td>
-                    <td>${item.fclty_nm}</td>
+                    <td>종목명</td>
+                    <td>${item.main_item_nm}</td>
                 </tr>
             </table>
             <button type="button" id="All">목록</button>
@@ -97,6 +96,11 @@
         var neLatLng = bounds.getNorthEast();
         var boundsStr = bounds.toString();
     }
+
+    $("#All").on("click", function() {
+        // voucher 페이지로 이동
+        window.location.href = "/voucher";
+    });
 </script>
     </div>
     </main>
