@@ -32,5 +32,11 @@ public class SportsclubServiceImpl implements SportsclubService {
         return sportsclubMapper.sportsclubCount();
     }
 
+    @Override
+    public List<SportsclubDTO> clubSearch(SportsclubDTO dto) {
+        logger.info("clubSearch");
+        return sportsclubMapper.clubSearch(dto);
+    }
+
 
 }
