@@ -8,11 +8,9 @@ public interface VoucherService {
     List<VoucherDTO> voucherSelectAll(VoucherDTO dto);
     List<VoucherDTO> voucherSelect(VoucherDTO dto);
 
-//    List<VoucherDTO> setSelectedSigngu(VoucherDTO dto);
     List<VoucherDTO> sportsclassName();
     int voucherCount(VoucherDTO dto);
 
     //검색
     List<VoucherDTO> voucherSearch(VoucherDTO dto);
-
 }

@@ -21,8 +21,8 @@ function selectCity(data){
 
     $("#sportsclasslist").append('<tr class="class_title">' + '<td class="class_title_2">' + '종목명' + '</td>'
         + '<td class="class_title_2">' + '상세종목' + '</td>'
-        + '<td class="class_title_2">' + '지역' + '</td>'
-        + '<td class="class_title_2">' + '시군구' + '</td>'
+        + '<td class="class_title_3">' + '지역' + '</td>'
+        + '<td class="class_title_3">' + '시군구' + '</td>'
         + '<td class="class_title_name">' + '교실명' + '</td>'
         +'</tr>');
     var selecteddata = '';
@@ -31,8 +31,8 @@ function selectCity(data){
 
         selecteddata += '<tr>' + '<td class="column1">' + lists.item_nm + '</td>'
             + '<td class="column2">' + lists.subitem_nm + '</td>'
-            + '<td class="column2">' + lists.ctprvn_nm + '</td>'
-            + '<td class="column2">' + lists.signgu_nm + '</td>'
+            + '<td class="column3">' + lists.ctprvn_nm + '</td>'
+            + '<td class="column3">' + lists.signgu_nm + '</td>'
             + '<td class="classname" onclick="classclick(\'' + lists.clssrm_nm + '\')">' + lists.clssrm_nm + '</td>'
             +'</tr>'
 

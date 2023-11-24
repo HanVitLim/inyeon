@@ -1,6 +1,5 @@
 package com.example.inyeon.main.controller;
 
-import com.example.inyeon.main.dto.SportsclubDTO;
 import com.example.inyeon.main.dto.VoucherDTO;
 import com.example.inyeon.main.service.VoucherService;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +22,9 @@ import java.util.*;
 @RequiredArgsConstructor
 public class VoucherController {
 
-    Logger logger = LogManager.getLogger(this.getClass());
     private final VoucherService voucherService;
+    Logger logger = LogManager.getLogger(this.getClass());
+
 
     @GetMapping("/voucher")
     public String voucherSelectAll(VoucherDTO dto, Model m){
@@ -81,6 +81,7 @@ public class VoucherController {
         logger.info("voucherSearch 진입 : ");
         logger.info(dto.getKeyword());
         logger.info(dto.getType());
+        String keyW = dto.getKeyword();
 
         int voucherCount = voucherService.voucherCount(dto);
         logger.info(voucherCount);
@@ -97,8 +98,8 @@ public class VoucherController {
         logger.info("list : " + list);
 
         list = voucherService.voucherSearch(dto);
-        logger.info("list.size >> " + list.size());
 
+        m.addAttribute("keyW",keyW);
         m.addAttribute("list", list);
         m.addAttribute("paging", paging);
 

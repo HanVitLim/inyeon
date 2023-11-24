@@ -3,7 +3,7 @@
 <html>
 <head>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <title>Title</title>
+    <title>Inyeon</title>
     <link rel="stylesheet" href="css/commonBody.css">
     <link rel="stylesheet" href="css/sportsclassSelect.css">
 
@@ -60,7 +60,7 @@
                 </tr>
             </table>
             <div class="back_button">
-                <button type="button" id="All">목록으로 돌아가기</button><img class= "back" src="img/backward_flip_icon.png">
+                <button type="button" id="All">목록으로 돌아가기</button><img class="back" src="img/backward_flip_icon.png">
             </div>
         </div>
     </div>

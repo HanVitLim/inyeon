@@ -13,8 +13,8 @@
 %>
 <html>
 <head>
-    <title>SportsClub</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Inyeon</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclubSelectAll.css">
     <script src="js/sportsclubfunctionjs.js"></script> <!-- Separate JavaScript file -->
     <script>
@@ -65,13 +65,14 @@
             console.log("links ::: ", links);
             links.forEach(function(link) {
                 // 링크의 href 속성과 현재 페이지 URL 비교
-                console.log("currenPage : ", currentPage);
+                console.log("currentPage : ", currentPage);
                 if (link.href === currentPage) {
                     // 현재 페이지와 일치하면 클래스 추가
                     link.classList.add("current-page");
                 }
             });
         });
+
     </script>
 </head>
 <body>
@@ -81,6 +82,7 @@
     <main>
         <div class="mainContainer">
             <div class="select_container">
+            <div>
                 <select id="ctprvn_nm" name="ctprvn_nm">
                     <option value="-" selected>지역</option>
                     <c:forEach var="citynamelist" items="${cityname}">
@@ -93,6 +95,8 @@
                         <option value="${itemnamelist}">${itemnamelist}</option>
                     </c:forEach>
                 </select>
+            </div>
+            <span>* 시설명을 클릭하시면 상세정보로 이동합니다.</span>
             </div>
             <table id="sportsclublist">
                 <tr class="club_title">
@@ -122,5 +126,6 @@
     <!-- footer include start-->
     <jsp:include page="footer.jsp" />
     <!-- footer include end-->
+
 </body>
 </html>

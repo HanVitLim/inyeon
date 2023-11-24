@@ -26,14 +26,9 @@ select {
     background-color: #fdfdfe;
     outline: none;
 }
-.select_container {
-    margin-top: 25px;
-    height: 40px;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+.space_fix {
+    margin-top: 65px;
 }
-
 table {
     border-top: 2px solid #d3d5d7;
     border-bottom: 2px solid #d3d5d7;
@@ -47,34 +42,21 @@ tr {
 td {
     padding: 0;
 }
-.class_title { /* tr */
+.club_title { /* tr */
     font-size: 20px;
     font-weight: bold;
     background-color: #ccf2ff;
     text-align: center;
+}
+.club_title_1 {
+    width: 99px;
     border-right: 1px solid #d3d5d7;
 }
-.class_title_1 {
-    width: 149px;
-    border-right: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
-}
-.class_title_2 {
-    width: 149px;
-    border-right: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
-}
-.class_title_3 {
-    width: 74px;
-    border-right: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
-}
-.class_title_name {
-    width: 350px;
-    border-bottom: 1px solid #d3d5d7;
+.club_title_2 {
+    width: 400px;
 }
 .column1 {
-    width: 149px;
+    width: 99px;
     text-align: center;
     font-weight: bold;
     background-color: #e6f9ff;
@@ -82,27 +64,21 @@ td {
     border-right: 1px solid #d3d5d7;
 }
 .column2 {
-    width: 149px;
+    width: 99px;
+    text-align: center;
     border-top: 1px solid #d3d5d7;
     border-right: 1px solid #d3d5d7;
-    text-align: center;
 }
-.column3 {
-    width: 74px;
-    border-top: 1px solid #d3d5d7;
-    border-right: 1px solid #d3d5d7;
-    text-align: center;
-}
-.classname {
-    width: 330px;
+.clubname {
+    width: 390px;
     border-top: 1px solid #d3d5d7;
     padding-left: 10px;
 }
-.classname:hover {
+.clubname:hover {
     cursor: pointer;
     background-color: #e6f9ff;
 }
-.class_intro {
+.club_intro {
     text-align: center;
     font-weight: bold;
     font-size: 17px;

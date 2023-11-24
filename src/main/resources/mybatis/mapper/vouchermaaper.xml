@@ -45,6 +45,10 @@
             where main_item_nm = #{main_item_nm}
             and ctprvn_nm = #{ctprvn_nm}
         </if>
+        <if test="keyword != null">
+            where main_item_nm = #{keyword}
+            or ctprvn_nm = #{keyword}
+        </if>
     </select>
 
     <select id="voucherSelect" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
@@ -68,14 +72,14 @@
     <!-- 검색 -->
     <select id="voucherSearch" parameterType="com.example.inyeon.main.dto.VoucherDTO" resultType="com.example.inyeon.main.dto.VoucherDTO">
         select
-             a.ctprvn_nm,
-             a.signgu_nm,
-             a.fclty_nm,
-             a.rprsntv_tel_no,
-             a.fclty_addr,
-             a.fclty_detail_addr,
-             a.main_item_nm,
-             b.ctprvn_cd
+            a.ctprvn_nm,
+            a.signgu_nm,
+            a.fclty_nm,
+            a.rprsntv_tel_no,
+            a.fclty_addr,
+            a.fclty_detail_addr,
+            a.main_item_nm,
+            b.ctprvn_cd
         from sportsvoucher a join citycode b on b.ctprvn_nm = a.ctprvn_nm
         where a.main_item_nm = #{keyword}
            or a.ctprvn_nm = #{keyword}

@@ -22,8 +22,8 @@
 %>
 <html>
 <head>
-    <title>Title</title>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Inyeon</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclassView.css">
     <script src="js/sportsclassfunctionjs.js"></script> <!-- Separate JavaScript file -->
     <script>
@@ -90,6 +90,7 @@
     <main>
         <div class="mainContainer">
             <div class="select_container">
+                <div>
             <select id="ctprvn_nm" name="ctprvn_nm">
                 <option value="-" selected>지역</option>
                 <c:forEach var="citynamelist" items="${cityname}">
@@ -103,20 +104,22 @@
                 </c:forEach>
             </select>
             </div>
+            <span>* 시설명을 클릭하시면 상세정보로 이동합니다.</span>
+            </div>
         <table id="sportsclasslist">
             <tr class="class_title">
                 <td class="class_title_1">종목명</td>
                 <td class="class_title_2">상세종목</td>
-                <td class="class_title_2">지역</td>
-                <td class="class_title_2">시군구</td>
+                <td class="class_title_3">지역</td>
+                <td class="class_title_3">시군구</td>
                 <td class="class_title_name">교실명</td>
             </tr>
             <c:forEach var="lista" items="${list}">
                <tr>
                    <td class="column1">${lista.item_nm}</td>
                    <td class="column2">${lista.subitem_nm}</td>
-                   <td class="column2">${lista.ctprvn_nm}</td>
-                   <td class="column2">${lista.signgu_nm}</td>
+                   <td class="column3">${lista.ctprvn_nm}</td>
+                   <td class="column3">${lista.signgu_nm}</td>
                    <td class="classname">${lista.clssrm_nm}</td>
                </tr>
             </c:forEach>
