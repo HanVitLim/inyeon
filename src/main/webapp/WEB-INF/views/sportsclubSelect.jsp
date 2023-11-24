@@ -17,7 +17,7 @@
 %>
 <html>
 <head>
-    <title>SportsClub</title>
+    <title>Inyeon</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclubSelect.css">
 

@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>SportsClub</title>
+    <title>Inyeon</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclubSelectAll.css">
     <script src="js/sportsclubfunctionjs.js"></script> <!-- Separate JavaScript file -->
@@ -82,6 +82,7 @@
     <main>
         <div class="mainContainer">
             <div class="select_container">
+            <div>
                 <select id="ctprvn_nm" name="ctprvn_nm">
                     <option value="-" selected>지역</option>
                     <c:forEach var="citynamelist" items="${cityname}">
@@ -94,6 +95,8 @@
                         <option value="${itemnamelist}">${itemnamelist}</option>
                     </c:forEach>
                 </select>
+            </div>
+            <span>* 시설명을 클릭하시면 상세정보로 이동합니다.</span>
             </div>
             <table id="sportsclublist">
                 <tr class="club_title">

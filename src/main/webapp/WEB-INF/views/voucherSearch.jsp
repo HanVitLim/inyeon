@@ -27,7 +27,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="js/vouchersearchjs.js"></script> <!-- Separate JavaScript file -->
 
-    <title>메인페이지</title>
+    <title>Inyeon</title>
 </head>
 <script>
     $(document).ready(function(){

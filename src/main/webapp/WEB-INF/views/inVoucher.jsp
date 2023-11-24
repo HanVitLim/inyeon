@@ -22,7 +22,7 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <title>Title</title>
+    <title>Inyeon</title>
     <link rel="stylesheet" href="css/inVoucher.css">
     <script src="js/sportsvoucherfunctionjs.js"></script> <!-- Separate JavaScript file -->
     <script>

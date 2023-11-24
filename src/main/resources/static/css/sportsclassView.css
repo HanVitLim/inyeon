@@ -29,6 +29,9 @@ select {
 .select_container {
     margin-top: 25px;
     height: 40px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 table {

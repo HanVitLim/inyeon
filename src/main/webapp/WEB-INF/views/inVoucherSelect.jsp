@@ -5,7 +5,7 @@
 <html>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d7d471db687c23809bd48aaf7da534a"></script>
 <head>
-    <title>SportsClub</title>
+    <title>Inyeon</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/inVoucherSelect.css">
     <script>
