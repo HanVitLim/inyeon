@@ -29,8 +29,10 @@ select {
 .select_container {
     margin-top: 25px;
     height: 40px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
 table {
     border-top: 2px solid #d3d5d7;
     border-bottom: 2px solid #d3d5d7;
@@ -44,29 +46,30 @@ tr {
 td {
     padding: 0;
 }
-.club_title { /* tr */
+.voucher_title { /* tr */
     font-size: 20px;
     font-weight: bold;
     background-color: #ccf2ff;
     text-align: center;
     border-right: 1px solid #d3d5d7;
 }
-.club_title_1 {
-    width: 149px;
+.voucher_title_1 {
+    width: 79px;
     border-right: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
 }
-.club_title_2 {
+.voucher_title_2 {
     width: 99px;
     border-right: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
 }
-.club_title_name {
-    width: 350px;
-    border-bottom: 1px solid #d3d5d7;
+.voucher_addr {
+    width: 419px;
+    border-right: 1px solid #d3d5d7;
+}
+.voucher_title_name {
+    width: 200px;
 }
 .column1 {
-    width: 149px;
+    width: 79px;
     text-align: center;
     font-weight: bold;
     background-color: #e6f9ff;
@@ -79,16 +82,23 @@ td {
     border-right: 1px solid #d3d5d7;
     text-align: center;
 }
-.clubname {
-    width: 330px;
+.column3 {
+    width: 399px;
+    border-top: 1px solid #d3d5d7;
+    border-right: 1px solid #d3d5d7;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.fcltyname {
+    width: 190px;
     border-top: 1px solid #d3d5d7;
     padding-left: 10px;
 }
-.clubname:hover {
+.fcltyname:hover {
     cursor: pointer;
     background-color: #e6f9ff;
 }
-.club_intro {
+.voucher_intro {
     text-align: center;
     font-weight: bold;
     font-size: 17px;

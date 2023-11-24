@@ -23,8 +23,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mainBody.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="css/clubSearch.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="js/clubsearchjs.js"></script> <!-- Separate JavaScript file -->
     <title>메인페이지</title>
 </head>
@@ -40,7 +40,6 @@
 
         $(".clubname").on("click", function() {
             var clubName = $(this).text();
-            alert(clubName);
             window.location.href = "/sportsclubSelect" + '?club_nm=' + encodeURIComponent(clubName);
         });
 
@@ -64,11 +63,6 @@
         });
     });
 </script>
-<style>
-    table, td {
-        border: 1px solid black;
-    }
-</style>
 <body>
 <div id="wrap">
     <!--Header include start-->
@@ -77,20 +71,21 @@
 
     <main>
         <div class="main_container">
+            <div class="space_fix"></div>
             <table>
-                <tr>
-                    <td>종목명</td>
-                    <td>부종목명</td>
-                    <td>시도명</td>
-                    <td>시군구명</td>
-                    <td>동호회명</td>
+                <tr class="club_title">
+                    <td class="club_title_1">종목명</td>
+                    <td class="club_title_1">종목상세</td>
+                    <td class="club_title_1">지역</td>
+                    <td class="club_title_1">시군구</td>
+                    <td class="club_title_2">동호회명</td>
                 </tr>
                 <c:forEach var="lista" items="${list}">
                     <tr>
-                        <td>${lista.item_nm}</td>
-                        <td>${lista.subitem_nm}</td>
-                        <td>${lista.ctprvn_nm}</td>
-                        <td>${lista.signgu_nm}</td>
+                        <td class="column1">${lista.item_nm}</td>
+                        <td class="column2">${lista.subitem_nm}</td>
+                        <td class="column2">${lista.ctprvn_nm}</td>
+                        <td class="column2">${lista.signgu_nm}</td>
                         <td class="clubname">${lista.club_nm}</td>
                     </tr>
                 </c:forEach>

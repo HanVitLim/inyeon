@@ -18,7 +18,7 @@
 <html>
 <head>
     <title>SportsClub</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/sportsclubSelect.css">
 
 </head>
@@ -33,9 +33,9 @@
 </script>
 -->
 <script>
-    function navigateToPage(pageUrl) {
-        window.location.href = pageUrl;
-    }
+    $(document).on("click", "#All", function(){
+        window.history.go(-1);
+    });
 </script>
 <body>
 

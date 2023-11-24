@@ -60,7 +60,7 @@
                 </tr>
             </table>
             <div class="back_button">
-                <button type="button" id="All">목록으로 돌아가기</button><img class= "back" src="img/backward_flip_icon.png">
+                <button type="button" id="All">목록으로 돌아가기</button><img class="back" src="img/backward_flip_icon.png">
             </div>
         </div>
     </div>

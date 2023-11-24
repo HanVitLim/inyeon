@@ -15,13 +15,24 @@ main {
     display: flex;
     justify-content: center;
 }
+select {
+    border: 2px solid #d3d5d7;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fdfdfe;
+    outline: none;
+}
 .space_fix {
     margin-top: 65px;
 }
 table {
     border-top: 2px solid #d3d5d7;
     border-bottom: 2px solid #d3d5d7;
-    border-spacing: 0px;
+    border-spacing: 0;
     border-collapse: separate;
 }
 tr {
@@ -31,13 +42,21 @@ tr {
 td {
     padding: 0;
 }
-.club_title {
+.club_title { /* tr */
     font-size: 20px;
     font-weight: bold;
     background-color: #ccf2ff;
+    text-align: center;
+}
+.club_title_1 {
+    width: 99px;
+    border-right: 1px solid #d3d5d7;
+}
+.club_title_2 {
+    width: 400px;
 }
 .column1 {
-    width: 149px;
+    width: 99px;
     text-align: center;
     font-weight: bold;
     background-color: #e6f9ff;
@@ -45,32 +64,26 @@ td {
     border-right: 1px solid #d3d5d7;
 }
 .column2 {
-    width: 630px;
+    width: 99px;
+    text-align: center;
+    border-top: 1px solid #d3d5d7;
+    border-right: 1px solid #d3d5d7;
+}
+.clubname {
+    width: 390px;
     border-top: 1px solid #d3d5d7;
     padding-left: 10px;
+}
+.clubname:hover {
+    cursor: pointer;
+    background-color: #e6f9ff;
 }
 .club_intro {
     text-align: center;
     font-weight: bold;
     font-size: 17px;
     background-color: #e6f9ff;
-    border-top: 1px solid #d3d5d7;
-    border-bottom: 1px solid #d3d5d7;
 }
-.club_intro_text {
-    text-align: center;
-    font-size: 17px;
-    height: 350px;
-    width: 760px;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-.club_intro_text {
-    text-align: center;
-    font-size: 17px;
-}
-
 .back_button {
     cursor: pointer;
     display: flex;
@@ -84,4 +97,26 @@ td {
 }
 .back{
     width:25px;
+}
+
+/* 페이지 버튼 */
+.ul_container {
+    margin-top: 5px;
+    display:flex;
+    justify-content: flex-end;
+}
+.paging > span > a {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.paging > span > a:visited {
+    color: black;
+}
+.paging > span > a.current-page {
+    font-size: 19px;
+    color: #0066ff; /* 현재 페이지를 강조하는 색상으로 설정 */
 }
