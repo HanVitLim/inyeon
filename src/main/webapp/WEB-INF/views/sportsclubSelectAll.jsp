@@ -96,7 +96,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <span>* 시설명을 클릭하시면 상세정보로 이동합니다.</span>
+            <span>* 동호회명을 클릭하시면 상세정보로 이동합니다.</span>
             </div>
             <table id="sportsclublist">
                 <tr class="club_title">

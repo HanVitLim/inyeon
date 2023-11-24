@@ -30,7 +30,7 @@
                         <option value="sel_class">생활체육 교실</option>
                         <option value="sel_club">생활체육 동호회</option>
                     </select>
-                    <input id="search_box" type="text" name="keyword" placeholder="검색어 입력">
+                    <input id="search_box" type="text" name="keyword" placeholder="검색어 입력(지역명 및 종목명)">
                     <!--<button type="button" id="searchBtn"></button>-->
                     <img id="search_icon" src="./img/search_icon.png">
                 </div>
