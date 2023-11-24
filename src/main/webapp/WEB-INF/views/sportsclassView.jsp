@@ -107,16 +107,16 @@
             <tr class="class_title">
                 <td class="class_title_1">종목명</td>
                 <td class="class_title_2">상세종목</td>
-                <td class="class_title_2">지역</td>
-                <td class="class_title_2">시군구</td>
+                <td class="class_title_3">지역</td>
+                <td class="class_title_3">시군구</td>
                 <td class="class_title_name">교실명</td>
             </tr>
             <c:forEach var="lista" items="${list}">
                <tr>
                    <td class="column1">${lista.item_nm}</td>
                    <td class="column2">${lista.subitem_nm}</td>
-                   <td class="column2">${lista.ctprvn_nm}</td>
-                   <td class="column2">${lista.signgu_nm}</td>
+                   <td class="column3">${lista.ctprvn_nm}</td>
+                   <td class="column3">${lista.signgu_nm}</td>
                    <td class="classname">${lista.clssrm_nm}</td>
                </tr>
             </c:forEach>

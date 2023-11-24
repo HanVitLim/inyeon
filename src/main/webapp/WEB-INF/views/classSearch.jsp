@@ -23,8 +23,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mainBody.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="css/classSearch.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="js/classsearchjs.js"></script> <!-- Separate JavaScript file -->
 
     <title>메인페이지</title>
@@ -41,7 +41,6 @@
 
         $(".classname").on("click", function() {
             var classname = $(this).text();
-            alert(classname);
             window.location.href = "/sportsclassselect" + '?clssrm_nm=' + encodeURIComponent(classname);
         });
 
@@ -65,11 +64,6 @@
         });
     });
 </script>
-<style>
-    table, td {
-        border: 1px solid black;
-    }
-</style>
 <body>
 <div id="wrap">
     <!--Header include start-->
@@ -78,20 +72,21 @@
 
     <main>
         <div class="main_container">
+            <div class="space_fix"></div>
             <table>
-                <tr>
-                    <td>종목명</td>
-                    <td>종목상세</td>
-                    <td>지역</td>
-                    <td>시군구</td>
-                    <td>교실명</td>
+                <tr class="class_title">
+                    <td class="class_title_1">종목명</td>
+                    <td class="class_title_1">상세종목</td>
+                    <td class="class_title_2">지역</td>
+                    <td class="class_title_2">시군구</td>
+                    <td class="class_title_3">교실명</td>
                 </tr>
                 <c:forEach var="lista" items="${list}">
                     <tr>
-                        <td>${lista.item_nm}</td>
-                        <td>${lista.subitem_nm}</td>
-                        <td>${lista.ctprvn_nm}</td>
-                        <td>${lista.signgu_nm}</td>
+                        <td class="column1">${lista.item_nm}</td>
+                        <td class="column2">${lista.subitem_nm}</td>
+                        <td class="column3">${lista.ctprvn_nm}</td>
+                        <td class="column3">${lista.signgu_nm}</td>
                         <td class="classname">${lista.clssrm_nm}</td>
                     </tr>
                 </c:forEach>
@@ -103,6 +98,7 @@
             </div>
         </div>
     </main>
+
     <!-- footer include start -->
     <jsp:include page="footer.jsp" />
     <!-- footer include end -->
